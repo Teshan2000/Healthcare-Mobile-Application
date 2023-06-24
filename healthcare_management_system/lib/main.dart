@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/auth.dart';
+import 'package:healthcare_management_system/utils/config.dart';
+import 'package:healthcare_management_system/utils/layout.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   static final navigatorKey = GlobalKey<NavigatorState>();
 
-  var onPressed;
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
           floatingLabelStyle: TextStyle(color: Config.primaryColor),
           prefixIconColor: Colors.black38,
         ),
+
         scaffoldBackgroundColor: Colors.white,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Config.primaryColor,
@@ -36,64 +39,15 @@ class MyApp extends StatelessWidget {
           elevation: 10,
           type: BottomNavigationBarType.fixed,
         ),
+        
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => const AuthPage(),
-        'main':(context) => const
+        '/':(context) => const Layout(),
+        'main':(context) => const Layout(),
       },
-      home: const MyHomePage(title: 'Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int currentPage = 0;
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Put Your Topic Here'),
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-        ),
-      ),
-      body: Center(),
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.blue,
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home, color: Colors.white), label: "Home"),
-          NavigationDestination(icon: Icon(Icons.message, color: Colors.blueGrey), label: "Messages"),
-          NavigationDestination(icon: Icon(Icons.calendar_month, color: Colors.blueGrey), label: "Schedule"),
-          NavigationDestination(icon: Icon(Icons.settings, color: Colors.blueGrey), label: "Settings"),
-        ],
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPage = index;
-          });
-        },
-        selectedIndex: currentPage,
-      ),
+      //home: const MyHomePage(title: 'Home Page'),
     );
   }
 }

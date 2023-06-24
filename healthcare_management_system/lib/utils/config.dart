@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class config {
+class Config {
   static MediaQueryData? mediaQueryData;
   static double? screenWidth;
   static double? screenHeight;

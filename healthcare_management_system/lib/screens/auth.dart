@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/utils/config.dart';
+
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Login Page"),
+        child: Text("LoginForm Page"),
       ),
     );
   }
