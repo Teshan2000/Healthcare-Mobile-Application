@@ -6,7 +6,7 @@ class Appointments extends StatefulWidget {
   @override
   State<Appointments> createState() => _AppointmentsState();
 }
-
+enum FilterStatus {upcoming}
 class _AppointmentsState extends State<Appointments> {
   @override
   Widget build(BuildContext context) {
