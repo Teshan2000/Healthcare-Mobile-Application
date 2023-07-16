@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/utils/config.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key, this.appTitle, this.route, this.icon, this.actions}) : super(key: key);
+  const CustomAppBar({Key? key, this.appTitle, this.route, this.icon, this.actions})
+      : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
 
   final String? appTitle;
   final String? route;
-  final String? icon;
+  final FaIcon? icon;
   final List<Widget>? actions;
 
   @override
@@ -28,7 +30,7 @@ class CustomAppBarState extends State<CustomAppBar> {
         style: const TextStyle(
           fontSize: 20,
           color: Colors.black,
-        )
+        ),
       ),  
       leading: widget.icon != null ? Container(
         margin: const EdgeInsets.symmetric(

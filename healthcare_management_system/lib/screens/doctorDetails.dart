@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../components/custom_appbar.dart';
-import '../utils/config.dart';
+import 'package:healthcare_management_system/utils/config.dart';
+import 'package:healthcare_management_system/components/custom_appbar.dart';
 
 class DoctorDetails extends StatefulWidget {
-  const DoctorDetails({Key? key}) : super(key: key);
+  const DoctorDetails({Key? key, required this.doctor, required this.isFav}) 
+        : super(key: key);
+  final Map<String, dynamic> doctor;
+  final bool isFav;
 
   @override
-  State<DoctorDetails> createState() => _DoctorDetailsState();
+  State<DoctorDetails> createState() => DoctorDetailsState();
 }
-class _DoctorDetailsState extends State<DoctorDetails> {
+
+class DoctorDetailsState extends State<DoctorDetails> {
+  Map<String, dynamic> doctor = {};
   bool isFav = false;
+
+  @override
+  void initState() {
+    doctor = widget.doctor;
+    isFav = widget.isFav;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,22 +31,40 @@ class _DoctorDetailsState extends State<DoctorDetails> {
         icon: const FaIcon(Icons.arrow_back_ios),
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               setState(() {
                 isFav = !isFav;
               });
             },
             icon: FaIcon(
-              isFav ? Icons.favourite_border : Icons.favourite_outline,
+              isFav ? Icons.favourite_rounded : Icons.favourite_outline,
               color: Colors.red,
-              ),
-            )
+            ),
+          )
         ]
       ),
       body: SafeArea(
         child: Column(
           children: <widget>[
-            AboutDoctor(), 
+            AboutDoctor(
+              doctor:doctor,
+            ), 
+            DetailBody(
+              doctor:doctor,
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Button(
+                width: double.infinity,
+                title: "Book a Doctor",
+                onPressed: () {
+                  Navigator.of(context).pushNamed("Booking Name",
+                      arguments: {"doc_id": doctor["doc_id"]});
+                },
+                disable: false,
+              ),
+            ),
           ],
         ),
       ),
@@ -43,7 +73,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 }
 
 class AboutDoctor extends StatelessWidget {
-  const AboutDoctor({Key? key}) : super(key: key);
+  const AboutDoctor({Key? key, required this.doctor}) : super(key: key);
+
+  final Map<dynamic, dynamic> doctor;
 
   @override
   Widget build(BuildContext context) {
