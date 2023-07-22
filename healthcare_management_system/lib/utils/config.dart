@@ -39,13 +39,15 @@ class Config {
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         color: Colors.blue,
-      ));
+      )
+  );
 
   static const errorBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         color: Colors.red,
-      ));
+      )
+  );
 
   static const primaryColor = Colors.blue;
 }

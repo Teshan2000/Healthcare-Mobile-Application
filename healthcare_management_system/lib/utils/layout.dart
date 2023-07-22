@@ -9,10 +9,10 @@ class Layout extends StatefulWidget {
   const Layout({Key? key}) : super(key: key);
 
   @override
-  State<Layout> createState() => _LayoutState();
+  State<Layout> createState() => LayoutState();
 }
 
-class _LayoutState extends State<Layout> {
+class LayoutState extends State<Layout> {
   int currentPage = 0;
   final PageController _page = PageController();
 
@@ -45,7 +45,6 @@ class _LayoutState extends State<Layout> {
           Appointments(),
           Schedule(),
           Messages(),
-
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

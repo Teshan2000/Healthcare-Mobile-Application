@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/auth.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:healthcare_management_system/utils/layout.dart';
+import 'package:healthcare_management_system/screens/appointments.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  //const MyApp({super.key});
+  const MyApp({super.key});
 
   static final navigatorKey = GlobalKey<NavigatorState>();
 
-  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Healthcare App - Flutter',
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -39,13 +40,14 @@ class MyApp extends StatelessWidget {
           elevation: 10,
           type: BottomNavigationBarType.fixed,
         ),
-        
         primarySwatch: Colors.blue,
       ),
+
       initialRoute: '/',
       routes: {
-        '/':(context) => const Layout(),
-        'main':(context) => const Layout(),
+        "/": (context) => const Layout(),
+        "main": (context) => const Layout(),
+        "appointment_page": (context) => const Appointments(),
       },
       //home: const MyHomePage(title: 'Home Page'),
     );
