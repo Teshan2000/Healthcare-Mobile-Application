@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:healthcare_management_system/components/custom_appbar.dart';
 
@@ -7,7 +7,7 @@ class DoctorDetails extends StatefulWidget {
   const DoctorDetails({Key? key, required this.doctor, required this.isFav}) 
         : super(key: key);
   final Map<String, dynamic> doctor;
-  final bool isFav;
+  final isFav;
 
   @override
   State<DoctorDetails> createState() => DoctorDetailsState();
@@ -29,12 +29,15 @@ class DoctorDetailsState extends State<DoctorDetails> {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Doctor Details Page",
-        icon: const FaIcon(Icons.arrow_back_ios),
+        //icon: const FaIcon(Icons.arrow_back_ios),
+        icon: const Icon(Icons.arrow_back_ios),
         actions: [
           IconButton(
             onPressed: () async {}, 
-            icon: FaIcon(
-              isFav ? Icons.favourite_rounded : Icons.favourite_outline,
+            icon: Icon(
+              //icon: FaIcon(
+              //isFav ? Icons.favourite_rounded : Icons.favourite_outline,
+              isFav ? Icons.favorite : Icons.favorite_border_outlined,
               color: Colors.red,
             ),
           )     
@@ -67,12 +70,16 @@ class DoctorDetailsState extends State<DoctorDetails> {
       ),
     );
   }
+
+  Button({required double width, required String title, required Null Function() onPressed, required bool disable}) {}
 }
 
 class AboutDoctor extends StatelessWidget {
   const AboutDoctor({Key? key, required this.doctor}) : super(key: key);
 
   final Map<dynamic, dynamic> doctor;
+
+  get assets => null;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +90,7 @@ class AboutDoctor extends StatelessWidget {
           children: <Widget>[
             CircleAvatar(
               radius: 65.0,
-              backgroundImage: AssetImage(assets/doctor.jpg),
+              backgroundImage: AssetImage(assets/doctor),
               backgroundColor: Colors.white,
             ),
             Config.spaceMedium,

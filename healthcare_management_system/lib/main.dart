@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:healthcare_management_system/screens/auth.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:healthcare_management_system/utils/layout.dart';
+import 'package:healthcare_management_system/screens/home.dart';
+import 'package:healthcare_management_system/screens/doctorDetails.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,9 +46,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(context) => const Layout(),
-        'main':(context) => const Layout(),
+        'main':(context) => const DoctorDetails(doctor: {}, isFav: null,),
       },
-      //home: const MyHomePage(title: 'Home Page'),
+      //home: const Home(),
     );
   }
 }
