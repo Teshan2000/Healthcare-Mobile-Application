@@ -28,12 +28,16 @@ class DoctorDetailsState extends State<DoctorDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        appTitle: "Doctor Details Page",
+        appTitle: "Doctor Details",
         //icon: const FaIcon(Icons.arrow_back_ios),
         icon: const Icon(Icons.arrow_back_ios),
         actions: [
           IconButton(
-            onPressed: () async {}, 
+            onPressed: () async {
+              setState(() {
+                isFav = !isFav;
+              });
+            }, 
             icon: Icon(
               //icon: FaIcon(
               //isFav ? Icons.favourite_rounded : Icons.favourite_outline,
@@ -57,9 +61,9 @@ class DoctorDetailsState extends State<DoctorDetails> {
               padding: const EdgeInsets.all(20),
               child: Button(
                 width: double.infinity,
-                title: "Book a Doctor",
+                title: "Book Appointment",
                 onPressed: () {
-                  Navigator.of(context).pushNamed("Booking Name",
+                  Navigator.of(context).pushNamed("appointment",
                       arguments: {"doc_id": doctor["doc_id"]});
                 },
                 disable: false,
@@ -84,18 +88,18 @@ class AboutDoctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Config().init(context);
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
           children: <Widget>[
-            CircleAvatar(
+            const CircleAvatar(
               radius: 65.0,
-              backgroundImage: AssetImage(assets/doctor),
+              backgroundImage: AssetImage("assets/doctor_9.jpg"),
               backgroundColor: Colors.white,
             ),
             Config.spaceMedium,
             const Text(
-              "Dr. Nishantha Kumara",
+              "Dr. Wasana Kumari",
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 24.0,
@@ -106,7 +110,7 @@ class AboutDoctor extends StatelessWidget {
             SizedBox(
               width: Config.widthSize * 0.75,
               child: const Text(
-                "MBBS (University of Colombo)",
+                "MBBS (International Medical University, Russia), MRCP (Royal College of Physicians, United Kingdom)",
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 15.0,
@@ -155,23 +159,29 @@ class DetailBody extends StatelessWidget {
             exp: doctor["experience"],
           ),
           Config.spaceMedium,
-          const Text(
-            'About Doctor',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 18,
-            ),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const <Widget>[
+              Text(
+                "Consultation Price",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
+                softWrap: true,
+                textAlign: TextAlign.left,
+              ),              
+              Text(
+                "Rs. 350",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,                  
+                ),
+                softWrap: true,
+                textAlign: TextAlign.right,
+              )
+            ],
           ),
-          Config.spaceSmall,
-          Text(
-            "Dr. Nishantha Kumara is an experience in Cardiography Specialist at Sarawak, graduated since 2008, and completed his/her training at Sungai Buloh General Hospital.",
-            style: const TextStyle(
-              fontWeight: FontWeight.w500,
-              height: 1.5,
-            ),
-            softWrap: true,
-            textAlign: TextAlign.justify,
-          )
         ],
       ),
     );
@@ -187,42 +197,19 @@ class DoctorInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Config().init(context);
+    Config().init(context);
     return Row(
-      children: <Widget>[
-        Expanded(child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Config.primaryColor,
-          ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 30,
-            horizontal: 15
-          ),
-          child: Column(
-          children: const <Widget>[
-            Text(
-              "Patients",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            SizedBox(height: 10,),
-            Text(
-              "109",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-          )
-        )
+      children: const <Widget>[
+        InfoCard(
+          label: "Dental",
+          value: "4.5",
         ),
-      ],
+        SizedBox(width: 15,),
+        InfoCard(
+          label: "Patients",
+          value: "93",
+        ),
+      ],       
     );
   }
 }
@@ -247,9 +234,9 @@ class InfoCard extends StatelessWidget {
           horizontal: 15
         ),
         child: Column(
-          children: const <Widget>[
+          children: <Widget>[
             Text(
-              "Patients",
+              label,
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 12,
@@ -260,7 +247,7 @@ class InfoCard extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "109",
+              value,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 15,
