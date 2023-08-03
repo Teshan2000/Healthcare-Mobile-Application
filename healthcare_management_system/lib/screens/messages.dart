@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../utils/config.dart';
 
 class Messages extends StatefulWidget {
   const Messages({Key? key}) : super(key: key);
@@ -11,7 +10,7 @@ class Messages extends StatefulWidget {
 class _MessagesState extends State<Messages> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text("Messages Page"),
       ),

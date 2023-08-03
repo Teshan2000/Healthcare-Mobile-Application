@@ -10,7 +10,7 @@ class Symptoms extends StatefulWidget {
 class _SymptomsState extends State<Symptoms> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text("Symptoms Page"),
       ),

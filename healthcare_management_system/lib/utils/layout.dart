@@ -21,15 +21,15 @@ class LayoutState extends State<Layout> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Hello User!"),
+        title: const Text("Hello User!"),
         leading: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
         ),
         actions: <Widget>[
           IconButton(
               onPressed: () {},
-              icon: Icon(Icons.more_vert),
+              icon: const Icon(Icons.more_vert),
           ),
         ],
       ),
