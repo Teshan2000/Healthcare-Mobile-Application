@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/auth.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:healthcare_management_system/utils/layout.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() {
+  _initializeFirebase();
   runApp(const MyApp());
 }
 
@@ -28,7 +31,6 @@ class MyApp extends StatelessWidget {
           floatingLabelStyle: TextStyle(color: Config.primaryColor),
           prefixIconColor: Colors.black38,
         ),
-
         scaffoldBackgroundColor: Colors.white,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Config.primaryColor,
@@ -39,15 +41,18 @@ class MyApp extends StatelessWidget {
           elevation: 10,
           type: BottomNavigationBarType.fixed,
         ),
-        
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => const Layout(),
-        'main':(context) => const Layout(),
+        '/': (context) => const Layout(),
+        'main': (context) => const Layout(),
       },
       //home: const MyHomePage(title: 'Home Page'),
     );
   }
+}
+
+_initializeFirebase() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
 import 'package:healthcare_management_system/screens/home.dart';
-import 'package:healthcare_management_system/screens/messages.dart';
+import 'package:healthcare_management_system/screens/message/messages.dart';
 import 'package:healthcare_management_system/screens/schedule.dart';
-
 
 class Layout extends StatefulWidget {
   const Layout({Key? key}) : super(key: key);
@@ -23,19 +22,19 @@ class _LayoutState extends State<Layout> {
         centerTitle: true,
         title: Text("Hello User!"),
         leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.menu),
+          onPressed: () {},
+          icon: Icon(Icons.menu),
         ),
         actions: <Widget>[
           IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.more_vert),
+            onPressed: () {},
+            icon: Icon(Icons.more_vert),
           ),
         ],
       ),
       body: PageView(
         controller: _page,
-        onPageChanged: ((value){
+        onPageChanged: ((value) {
           setState(() {
             currentPage = value;
           });
@@ -45,12 +44,11 @@ class _LayoutState extends State<Layout> {
           Appointments(),
           Schedule(),
           Messages(),
-
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentPage,
-        onTap: (page){
+        onTap: (page) {
           setState(() {
             currentPage = page;
             _page.animateToPage(
