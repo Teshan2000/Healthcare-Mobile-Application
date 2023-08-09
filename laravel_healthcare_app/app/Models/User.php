@@ -25,6 +25,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'type',
         'email',
         'password',
     ];
@@ -58,4 +59,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function doctor() {
+        return $this->hasOne(DoctorDetails::class, 'doctor_id');
+    }
+
+    public function patient() {
+        return $this->hasOne(PatientDetails::class, 'patient_id');
+    }
 }
