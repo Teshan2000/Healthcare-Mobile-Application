@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 [x-cloak] {
-    display: none;
+    display: contents;
 }

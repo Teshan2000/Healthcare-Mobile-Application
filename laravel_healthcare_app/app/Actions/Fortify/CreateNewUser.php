@@ -31,23 +31,23 @@ class CreateNewUser implements CreatesNewUsers
         $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'type' => $input['type'],
+            'type' => 'doctor',
             'password' => Hash::make($input['password']),
         ]);
 
-        if($input['type'] == 'doctor') {
-            $doctorInfo = DoctorDetails::create([
-                'doctor_id' => $user->id,
-                'status' => 'active,'
-            ]);
-        }
+    
+        $doctorInfo = DoctorDetails::create([
+            'doctor_id' => $user->id,
+            'status' => 'active'
+        ]);
+        
 
-        else if($input['type'] == 'patient') {
+        /*else if($input['type'] == 'patient') {
             $patientInfo = PatientDetails::create([
                 'patient_id' => $user->id,
                 'status' => 'active,'
             ]);
-        }
+        }*/
 
         return $user;
     }
