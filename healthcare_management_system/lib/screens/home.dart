@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import 'package:flutter/material.dart';
 import '../utils/config.dart';
 
@@ -19,3 +20,5 @@ class _HomeState extends State<Home> {
     );
   }
 }
+=======
+>>>>>>> Stashed changes

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 import 'package:healthcare_management_system/screens/doctorDetails.dart';
 import 'package:healthcare_management_system/screens/home.dart';
 import 'package:healthcare_management_system/screens/schedule.dart';
@@ -6,11 +7,15 @@ import 'package:healthcare_management_system/screens/symptoms.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:healthcare_management_system/utils/layout.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
+=======
+import 'user_list_screen.dart';
+>>>>>>> Stashed changes
 
 void main() {
-  runApp(const MyApp());
+  runApp(UserDetailsApp());
 }
 
+<<<<<<< Updated upstream
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -56,6 +61,17 @@ class MyApp extends StatelessWidget {
         "appointment_page": (context) => const Appointments(),
       },
       //home: const MyHomePage(title: 'Home Page'),
+=======
+class UserDetailsApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'User Details',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: UserListScreen(),
+>>>>>>> Stashed changes
     );
   }
 }

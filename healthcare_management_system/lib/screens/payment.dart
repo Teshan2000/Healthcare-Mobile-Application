@@ -10,10 +10,16 @@ class Payment extends StatefulWidget {
 class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
+<<<<<<< Updated upstream
     return const Scaffold(
       body: Center(
+=======
+    const center = Center(
+>>>>>>> Stashed changes
         child: Text("Payment Page"),
-      ),
+      );
+    return const Scaffold(
+      body: center,
     );
   }
 }

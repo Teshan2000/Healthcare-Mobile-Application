@@ -10,8 +10,15 @@ class Schedule extends StatefulWidget {
 class _ScheduleState extends State<Schedule> {
   @override
   Widget build(BuildContext context) {
+<<<<<<< Updated upstream
     return const Scaffold(
+=======
+    // ignore: prefer_const_constructors
+    return Scaffold(
+      // ignore: prefer_const_constructors
+>>>>>>> Stashed changes
       body: Center(
+        // ignore: prefer_const_constructors
         child: Text("Schedule Page"),
       ),
     );
