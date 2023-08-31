@@ -19,20 +19,6 @@ class LayoutState extends State<Layout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Hello User!"),
-        leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.menu),
-        ),
-        actions: <Widget>[
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.more_vert),
-          ),
-        ],
-      ),
       body: PageView(
         controller: _page,
         onPageChanged: ((value){

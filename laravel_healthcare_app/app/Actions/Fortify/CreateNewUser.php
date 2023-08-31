@@ -3,7 +3,6 @@
 namespace App\Actions\Fortify;
 
 use App\Models\DoctorDetails;
-use App\Models\PatientDetails;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -41,14 +40,6 @@ class CreateNewUser implements CreatesNewUsers
             'status' => 'active'
         ]);
         
-
-        /*else if($input['type'] == 'patient') {
-            $patientInfo = PatientDetails::create([
-                'patient_id' => $user->id,
-                'status' => 'active,'
-            ]);
-        }*/
-
         return $user;
     }
 }
