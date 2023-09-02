@@ -31,11 +31,12 @@ dependencies:
   dio: ^5.3.2
   rating_dialog: ^2.0.4
   font_awesome_flutter: ^10.2.1
+  table_calendar: ^3.0.8
+  lottie: ^2.0.0
+
   flutter:
     sdk: flutter
   
-  #table_calendar: ^3.0.8
-  #lottie: ^2.0.0
   #dio: ^4.0.6
   
   #shared_preferences: ^2.0.15

@@ -163,7 +163,7 @@ class DetailBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const <Widget>[
               Text(
-                "Consultation Price",
+                "Channeling Fee",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 18,
