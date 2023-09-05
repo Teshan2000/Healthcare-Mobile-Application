@@ -48,4 +48,8 @@ class Config {
       ));
 
   static const primaryColor = Colors.blue;
+
+  static const secondaryColor = Color.fromARGB(255, 239, 136, 1);
+
+  static const defaultPadding = 20.0;
 }

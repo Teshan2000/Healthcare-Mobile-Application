@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
+import 'package:healthcare_management_system/screens/chats/chats_screen.dart';
 import 'package:healthcare_management_system/screens/home.dart';
-import 'package:healthcare_management_system/screens/message/messages.dart';
 import 'package:healthcare_management_system/screens/schedule.dart';
 
 class Layout extends StatefulWidget {
@@ -43,7 +43,7 @@ class _LayoutState extends State<Layout> {
           Home(),
           Appointments(),
           Schedule(),
-          Messages(),
+          ChatsScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
