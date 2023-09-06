@@ -1,8 +1,4 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../main.dart';
 import '../utils/config.dart';
 import 'button.dart';

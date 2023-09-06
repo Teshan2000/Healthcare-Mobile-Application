@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/customAppbar.dart';
+import '../components/doctorCard.dart';
 import '../utils/config.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -206,11 +207,11 @@ class HomeState extends State<Home> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                /*Column(
+                Column(
                   children: List.generate(5, (index) {
                     return const DoctorCard();
                   }),
-                )*/
+                )
                 /*Row(
                   children: [
                     Column(children: [
