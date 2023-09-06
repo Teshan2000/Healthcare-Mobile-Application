@@ -68,7 +68,6 @@ class AppointmentsState extends State<Appointments> {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Your Appointments",
-        //icon: const FaIcon(Icons.arrow_back_ios),
         icon: const Icon(Icons.menu),
         actions: [
           IconButton(

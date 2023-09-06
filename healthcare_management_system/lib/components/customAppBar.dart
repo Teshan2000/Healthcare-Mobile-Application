@@ -1,4 +1,3 @@
-import 'package:healthcare_management_system/components/customAppBar.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,6 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String? appTitle;
   final String? route;
   final Icon? icon;
-  //final FaIcon? icon;
   final List<Widget>? actions;
 
   @override
@@ -24,19 +22,23 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: true,
-      backgroundColor: Colors.white, //background color is white in this app
+      backgroundColor: Colors.blue, //background color is white in this app
       elevation: 0,
-      title: Text(
-        widget.appTitle!,
-        style: const TextStyle(
-          fontSize: 20,
-          color: Colors.black,
+      title: Center(
+        child: Text(
+          widget.appTitle!,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
       ),
       //if icon is not set, return null
-      leading: widget.icon != null
-          ? Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      leading: widget.icon != null ? Container(
+        margin: const EdgeInsets.symmetric(
+          horizontal: 10, 
+          vertical: 10,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Config.primaryColor,
@@ -56,9 +58,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
           color: Colors.white,
         ),
       )
-          : null,
+      : null,
       //if action is not set, return null
-      actions: widget.actions,
+      actions: widget.actions ?? null,
     );
   }
 }
