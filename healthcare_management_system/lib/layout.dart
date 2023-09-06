@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
 import 'package:healthcare_management_system/screens/home.dart';
 import 'package:healthcare_management_system/screens/messages.dart';
-import 'package:healthcare_management_system/screens/schedule.dart';
+import 'package:healthcare_management_system/screens/settings.dart';
 
 
 class Layout extends StatefulWidget {
@@ -26,11 +26,11 @@ class LayoutState extends State<Layout> {
             currentPage = value;
           });
         }),
-        children: const <Widget>[
+        children: <Widget>[
           Home(),
-          Appointments(),
-          Schedule(),
+          Appointments(),          
           Messages(),
+          Settings(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -55,12 +55,12 @@ class LayoutState extends State<Layout> {
             label: "Appointments",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: "Schedules",
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.message),
             label: "Messages",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings_rounded),
+            label: "Settings",
           ),
         ],
       ),

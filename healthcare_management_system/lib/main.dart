@@ -4,7 +4,7 @@ import 'package:healthcare_management_system/screens/home.dart';
 import 'package:healthcare_management_system/screens/schedule.dart';
 import 'package:healthcare_management_system/screens/symptoms.dart';
 import 'package:healthcare_management_system/utils/config.dart';
-import 'package:healthcare_management_system/utils/layout.dart';
+import 'package:healthcare_management_system/layout.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
 
 void main() {
