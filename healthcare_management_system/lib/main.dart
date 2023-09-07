@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/screens/auth.dart';
 import 'package:healthcare_management_system/screens/doctorDetails.dart';
 import 'package:healthcare_management_system/screens/home.dart';
+import 'package:healthcare_management_system/screens/payment.dart';
 import 'package:healthcare_management_system/screens/schedule.dart';
+import 'package:healthcare_management_system/screens/settings.dart';
+import 'package:healthcare_management_system/screens/success.dart';
 import 'package:healthcare_management_system/screens/symptoms.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:healthcare_management_system/layout.dart';
-import 'package:healthcare_management_system/screens/appointments.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,12 +51,16 @@ class MyApp extends StatelessWidget {
 
       initialRoute: '/',
       routes: {
-        "/": (context) => const Layout(),
-        "main": (context) => const Home(),
+        '/':(context) => const AuthPage(),
+        'login':(context) => const Home(),
+        'login':(context) => const Layout(),
         'symptoms': (context) => const Symptoms(),
-        //'doctor': (context) => const DoctorDetails(),
-        'appointment': (context) => const Schedule(),
-        "appointment_page": (context) => const Appointments(),
+        'doctor': (context) => const DoctorDetails(),
+        'schedule': (context) => const Schedule(),
+        'payment': (context) => Payment(),
+        'success': (context) => const Success(),
+        'settings': (context) => Settings(),
+        //'user':(context) => const AddUserDetails(),
       },
       //home: const MyHomePage(title: 'Home Page'),
     );

@@ -67,7 +67,7 @@ class TopicTile extends StatelessWidget {
         ],
       ),
       onTap: () {
-        Navigator.of(context).pushNamed("schedule",);
+        Navigator.of(context).pushNamed("user",);
       },
     );
   }
