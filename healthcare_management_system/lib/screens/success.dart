@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/layout.dart';
+import 'package:healthcare_management_system/screens/home.dart';
 import 'package:lottie/lottie.dart';
 import '../components/button.dart';
 
@@ -33,7 +35,10 @@ class Success extends StatelessWidget {
               child: Button(
                 width: double.infinity,
                 title: 'Back to Home Page',
-                onPressed: () => Navigator.of(context).pushNamed('home'),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Layout()));
+                },
                 disable: false,
               ),
             )

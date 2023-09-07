@@ -39,15 +39,57 @@ class Config {
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         color: Colors.blue,
-      )
-  );
+      ));
 
   static const errorBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         color: Colors.red,
-      )
-  );
+      ));
 
   static const primaryColor = Colors.blue;
+
+  static const secondaryColor = Color.fromARGB(255, 239, 136, 1);
+
+  static const defaultPadding = 20.0;
+}
+
+const textInputDecoration = InputDecoration(
+  labelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w300),
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Color(0xFFee7b64), width: 2),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Color(0xFFee7b64), width: 2),
+  ),
+  errorBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Color(0xFFee7b64), width: 2),
+  ),
+);
+
+void nextScreen(context, page) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+}
+
+void nextScreenReplace(context, page) {
+  Navigator.pushReplacement(
+      context, MaterialPageRoute(builder: (context) => page));
+}
+
+void showSnackbar(context, color, message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        message,
+        style: const TextStyle(fontSize: 14),
+      ),
+      backgroundColor: color,
+      duration: const Duration(seconds: 2),
+      action: SnackBarAction(
+        label: "OK",
+        onPressed: () {},
+        textColor: Colors.white,
+      ),
+    ),
+  );
 }

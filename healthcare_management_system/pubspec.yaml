@@ -28,6 +28,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: ^4.9.1
+  image_picker: ^1.0.4
+  file_picker: ^5.5.0
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.9.0
+  shared_preferences: ^2.2.1
   dio: ^5.3.2
   rating_dialog: ^2.0.4
   font_awesome_flutter: ^10.2.1
@@ -72,6 +78,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Assets/
+    - Assets/symptoms/
+    - Assets/banner/
       #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

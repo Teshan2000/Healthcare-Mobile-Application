@@ -9,47 +9,47 @@ class Appointments extends StatefulWidget {
   @override
   State<Appointments> createState() => AppointmentsState();
 }
+
 enum FilterStatus { Upcoming, Completed, Canceled }
 
 class AppointmentsState extends State<Appointments> {
-  FilterStatus status = FilterStatus.Upcoming; 
+  FilterStatus status = FilterStatus.Upcoming;
   Alignment _alignment = Alignment.centerLeft;
   List<dynamic> schedules = [
     {
-      "doctorName":"Kasun Perera",
-      "doctorProfile":"Assets/doctor_2.jpg",
-      "category":"Cardiology",
-      "status":FilterStatus.Upcoming,
+      "doctorName": "Kasun Perera",
+      "doctorProfile": "Assets/doctor_2.jpg",
+      "category": "Cardiology",
+      "status": FilterStatus.Upcoming,
     },
     {
-      "doctorName":"Hana Gamage",
-      "doctorProfile":"Assets/doctor_4.jpg",
-      "category":"Dental",
-      "status":FilterStatus.Upcoming,
+      "doctorName": "Hana Gamage",
+      "doctorProfile": "Assets/doctor_4.jpg",
+      "category": "Dental",
+      "status": FilterStatus.Upcoming,
     },
     {
-      "doctorName":"Kalum Weerasiri",
-      "doctorProfile":"Assets/doctor_8.jpg",
-      "category":"Diabetics",
-      "status":FilterStatus.Completed,
+      "doctorName": "Kalum Weerasiri",
+      "doctorProfile": "Assets/doctor_8.jpg",
+      "category": "Diabetics",
+      "status": FilterStatus.Completed,
     },
     {
-      "doctorName":"Wasana Kumari",
-      "doctorProfile":"Assets/doctor_9.jpg",
-      "category":"Eye Care",
-      "status":FilterStatus.Canceled,
+      "doctorName": "Wasana Kumari",
+      "doctorProfile": "Assets/doctor_9.jpg",
+      "category": "Eye Care",
+      "status": FilterStatus.Canceled,
     },
     {
-      "doctorName":"Nishantha Kumara",
-      "doctorProfile":"Assets/doctor_3.jpg",
-      "category":"Fever",
-      "status":FilterStatus.Canceled,
+      "doctorName": "Nishantha Kumara",
+      "doctorProfile": "Assets/doctor_3.jpg",
+      "category": "Fever",
+      "status": FilterStatus.Canceled,
     }
   ];
 
   @override
   Widget build(BuildContext context) {
-
     List<dynamic> filteredSchedules = schedules.where((var schedule) {
       /*switch (schedule['status']) {
         case 'upcoming':
@@ -68,7 +68,7 @@ class AppointmentsState extends State<Appointments> {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Your Appointments",
-        icon: const Icon(Icons.menu),
+        //icon: const Icon(Icons.menu),
         actions: [
           IconButton(
             onPressed: () async {},
@@ -108,10 +108,12 @@ class AppointmentsState extends State<Appointments> {
                                 if (filterStatus == FilterStatus.Upcoming) {
                                   status = FilterStatus.Upcoming;
                                   _alignment = Alignment.centerLeft;
-                                } else if (filterStatus == FilterStatus.Completed) {
+                                } else if (filterStatus ==
+                                    FilterStatus.Completed) {
                                   status = FilterStatus.Completed;
                                   _alignment = Alignment.center;
-                                } else if (filterStatus == FilterStatus.Canceled) {
+                                } else if (filterStatus ==
+                                    FilterStatus.Canceled) {
                                   status = FilterStatus.Canceled;
                                   _alignment = Alignment.centerRight;
                                 }
@@ -169,7 +171,8 @@ class AppointmentsState extends State<Appointments> {
                     margin: !isLastElement
                         ? const EdgeInsets.only(bottom: 20)
                         : EdgeInsets.zero,
-                    child: Padding(  //this is it
+                    child: Padding(
+                      //this is it
                       padding: const EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -177,9 +180,8 @@ class AppointmentsState extends State<Appointments> {
                           Row(
                             children: [
                               CircleAvatar(
-                                backgroundImage: AssetImage(
-                                    schedule["doctorProfile"]
-                                ),
+                                backgroundImage:
+                                    AssetImage(schedule["doctorProfile"]),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -280,10 +282,8 @@ class AppointmentsState extends State<Appointments> {
                                                 //   MyApp.navigatorKey.currentState!
                                                 //       .pushNamed('main');
                                                 // }
-                                              }
-                                          );
-                                        }
-                                    );
+                                              });
+                                        });
                                   },
                                 ),
                               ),
@@ -317,7 +317,6 @@ class AppointmentsState extends State<Appointments> {
     );
   }
 }
-
 
 class ScheduleCard extends StatelessWidget {
   // const ScheduleCard({Key? key, required this.appointment}) : super(key: key);
@@ -360,9 +359,9 @@ class ScheduleCard extends StatelessWidget {
           ),
           Flexible(
               child: Text(
-                '2.00 PM',
-                style: TextStyle(color: Colors.white),
-              ))
+            '2.00 PM',
+            style: TextStyle(color: Colors.white),
+          ))
         ],
       ),
     );

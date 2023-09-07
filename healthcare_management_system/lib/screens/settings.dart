@@ -7,7 +7,7 @@ class Settings extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Settings",
-        icon: const Icon(Icons.arrow_back_ios),
+        //icon: const Icon(Icons.arrow_back_ios),
         actions: [
           IconButton(
             onPressed: () async {},
@@ -67,7 +67,9 @@ class TopicTile extends StatelessWidget {
         ],
       ),
       onTap: () {
-        Navigator.of(context).pushNamed("schedule",);
+        Navigator.of(context).pushNamed(
+          "schedule",
+        );
       },
     );
   }

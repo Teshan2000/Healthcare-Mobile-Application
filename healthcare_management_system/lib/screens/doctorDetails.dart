@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
-import '../components/customAppBar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:healthcare_management_system/screens/schedule.dart';
+import '../components/customAppbar.dart';
+import '../components/doctorCard.dart';
 import '../utils/config.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../components/button.dart';
 
 class DoctorDetails extends StatefulWidget {
-  const DoctorDetails({Key? key, /*required this.doctor, required this.isFav*/})
-        : super(key: key);
+  const DoctorDetails({
+    Key? key,
+    /*required this.doctor, required this.isFav*/
+  }) : super(key: key);
 
   /*final Map<String, dynamic> doctor;
   final isFav;*/
@@ -30,8 +41,8 @@ class DoctorDetailsState extends State<DoctorDetails> {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Doctor Details",
+        //icon: const FaIcon(Icons.arrow_back_ios),
         icon: const Icon(Icons.arrow_back_ios),
-        //icon: const Icon(FontAwesomeIcons.arrowUpFromBracket),
         actions: [
           IconButton(
             onPressed: () async {
@@ -45,27 +56,36 @@ class DoctorDetailsState extends State<DoctorDetails> {
               isFav ? Icons.favorite : Icons.favorite_border_outlined,
               color: Colors.red,
             ),
-          )     
+          )
         ],
       ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
             const DetailHead(
-              //doctor:doctor,
-            ),
+                //doctor:doctor,
+                ),
             const DetailBody(
-              //doctor:doctor,
-            ),
+                //doctor:doctor,
+                ),
             Padding(
               padding: const EdgeInsets.all(20),
               child: Button(
                 width: double.infinity,
                 title: "Book Appointment",
                 onPressed: () {
-                  Navigator.of(context).pushNamed("appointment",
-                      /*arguments: {"doc_id": doctor["doc_id"]}*/);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Schedule(),
+                    ),
+                  );
                 },
+                // onPressed: () {
+                //   Navigator.of(context).pushNamed(
+                //     "appointment", /*arguments: {"doc_id": doctor["doc_id"]}*/
+                //   );
+                // },
                 disable: false,
               ),
             ),
@@ -75,11 +95,14 @@ class DoctorDetailsState extends State<DoctorDetails> {
     );
   }
 
-  Button({required double width, required String title, required Null Function() onPressed, required bool disable}) {}
+  //Button({required double width, required String title, required Null Function() onPressed, required bool disable}) {}
 }
 
 class DetailHead extends StatelessWidget {
-  const DetailHead({Key? key, /*required this.doctor*/}) : super(key: key);
+  const DetailHead({
+    Key? key,
+    /*required this.doctor*/
+  }) : super(key: key);
 
   //final Map<dynamic, dynamic> doctor;
 
@@ -89,59 +112,61 @@ class DetailHead extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Column(
-          children: <Widget>[
-            Config.spaceMedium,
-            const CircleAvatar(
-              radius: 65.0,
-              backgroundImage: AssetImage("Assets/doctor_9.jpg"),
-              backgroundColor: Colors.white,
+        children: <Widget>[
+          Config.spaceMedium,
+          const CircleAvatar(
+            radius: 65.0,
+            backgroundImage: AssetImage("Assets/doctor_9.jpg"),
+            backgroundColor: Colors.white,
+          ),
+          Config.spaceMedium,
+          const Text(
+            "Dr. Wasana Kumari",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
             ),
-            Config.spaceMedium,
-            const Text(
-              "Dr. Wasana Kumari",
+          ),
+          Config.spaceSmall,
+          SizedBox(
+            width: Config.widthSize * 0.75,
+            child: const Text(
+              "MBBS (International Medical University, Russia), MRCP (Royal College of Physicians, United Kingdom)",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16.0,
+              ),
+              softWrap: true,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Config.spaceSmall,
+          SizedBox(
+            width: Config.widthSize * 0.75,
+            child: const Text(
+              "Colombo General Hospital",
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 25.0,
+                fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
+              softWrap: true,
+              textAlign: TextAlign.center,
             ),
-            Config.spaceSmall,
-            SizedBox(
-              width: Config.widthSize * 0.75,
-              child: const Text(
-                "MBBS (International Medical University, Russia), MRCP (Royal College of Physicians, United Kingdom)",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 16.0,
-                ),
-                softWrap: true,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Config.spaceSmall,
-            SizedBox(
-              width: Config.widthSize * 0.75,
-              child: const Text(
-                "Colombo General Hospital",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
-                softWrap: true,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Config.spaceSmall,
-          ],
+          ),
+          Config.spaceSmall,
+        ],
       ),
     );
   }
 }
 
-
 class DetailBody extends StatelessWidget {
-  const DetailBody({Key? key, /*required this.doctor*/}) : super(key: key);
+  const DetailBody({
+    Key? key,
+    /*required this.doctor*/
+  }) : super(key: key);
 
   //final Map<dynamic, dynamic> doctor;
 
@@ -155,15 +180,15 @@ class DetailBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const DoctorInfo(
-            /*patients: doctor["patients"],
+              /*patients: doctor["patients"],
             exp: doctor["experience"],*/
-          ),
+              ),
           Config.spaceMedium,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const <Widget>[
               Text(
-                "Channeling Fee",
+                "Consultation Price",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 18,
@@ -190,8 +215,10 @@ class DetailBody extends StatelessWidget {
 }
 
 class DoctorInfo extends StatelessWidget {
-  const DoctorInfo({Key? key, /*required this.patients, required this.exp*/})
-      : super(key: key);
+  const DoctorInfo({
+    Key? key,
+    /*required this.patients, required this.exp*/
+  }) : super(key: key);
 
   /*final int patients;
   final int exp;*/
@@ -202,26 +229,65 @@ class DoctorInfo extends StatelessWidget {
     return Row(
       children: const <Widget>[
         InfoCard(
-            label: "Patients",
-            value: "98",
+          label: "Patients",
+          value: "98",
         ),
-        SizedBox(width: 15,),
+        SizedBox(
+          width: 15,
+        ),
         InfoCard(
           label: "Experience",
           value: "6 Years",
         ),
-        SizedBox(width: 15,),
+        SizedBox(
+          width: 15,
+        ),
         InfoCard(
           label: "Ratings",
           value: "4.5",
         ),
+        /*Expanded(
+            child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Config.primaryColor,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 30,
+                  horizontal: 15
+                ),
+                child: Column(
+                  children: const <Widget>[
+                    Text(
+                      "Patients",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "109",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+                )
+        )
+        ),*/
       ],
     );
   }
 }
 
 class InfoCard extends StatelessWidget {
-  const InfoCard({Key? key, required this.label, required this.value}) 
+  const InfoCard({Key? key, required this.label, required this.value})
       : super(key: key);
 
   final String label;
@@ -235,10 +301,7 @@ class InfoCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           color: Config.primaryColor,
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 30,
-          horizontal: 15
-        ),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 15),
         child: Column(
           children: <Widget>[
             Text(

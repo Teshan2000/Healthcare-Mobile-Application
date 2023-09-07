@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a99808cd-a181-4571-af02-2731165a9694" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/Assets/phone.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/android/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/ios/firebase_app_id_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/ios/firebase_app_id_file.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/components/loginForm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/components/loginForm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/firebase_options.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/firebase_options.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/screens/appointments.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/screens/appointments.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/screens/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/screens/auth.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/screens/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/screens/login.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/screens/message/messages.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/screens/payment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/screens/payment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/screens/schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/screens/schedule.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/screens/symptoms.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/screens/symptoms.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/utils/config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/lib/utils/config.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/lib/utils/layout.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthcare_management_system/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/healthcare_management_system/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/healthcare_management_system" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2SUOrcMTom7Rlla7HdddMyn2DKz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/isuru_6m3tysr/OneDrive/Documents/GitHub/Healthcare-Management-System&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="C:/Users/isuru_6m3tysr/OneDrive/Documents/GitHub/Healthcare-Management-System/healthcare_management_system/android [signinReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/healthcare_management_system/android" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signinReport" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.C:/Users/isuru_6m3tysr/OneDrive/Documents/GitHub/Healthcare-Management-System/healthcare_management_system/android [signinReport]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a99808cd-a181-4571-af02-2731165a9694" name="Changes" comment="" />
+      <created>1689197892302</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689197892302</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

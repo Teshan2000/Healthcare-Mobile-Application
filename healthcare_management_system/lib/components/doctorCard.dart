@@ -28,7 +28,7 @@ class DoctorCard extends StatelessWidget {
               SizedBox(
                 width: Config.widthSize * 0.28,
                 child: Image.asset(
-                  "Assets/doctor_3.jpg",
+                  "Assets/doctor_4.jpg",
                   fit: BoxFit.fill,
                 ),
               ),
@@ -88,12 +88,8 @@ class DoctorCard extends StatelessWidget {
           ),
         ),
         onTap: () {
-          MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
-              builder: (_) => const DoctorDetails(
-                    /*doctor: doctor,
-                    isFav: isFav,*/
-              )
-          ));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => DoctorDetails()));
         },
       ),
     );

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "928595404196",
+    "project_id": "medicare-ed2de",
+    "storage_bucket": "medicare-ed2de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928595404196:android:010825260420a76e8f0d31",
+        "android_client_info": {
+          "package_name": "com.example.healthcare_management_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928595404196-09q9ldvv8atfub5jcvlrkfmvoc22cev3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAURxTmESA0LF9YeNcZLa5yi8g9AheKesM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928595404196-09q9ldvv8atfub5jcvlrkfmvoc22cev3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
