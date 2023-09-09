@@ -50,4 +50,6 @@ class Config {
   );
 
   static const primaryColor = Colors.blue;
+
+  static const defaultPadding = 20.0;
 }
