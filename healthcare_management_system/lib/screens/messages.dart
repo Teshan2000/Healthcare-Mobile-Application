@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/components/chatCard.dart';
+import 'package:healthcare_management_system/models/Chat.dart';
 import 'package:healthcare_management_system/screens/messageScreen.dart';
 import '../components/customAppbar.dart';
 import '../utils/config.dart';
