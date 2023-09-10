@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 
-class PaymentDetailsPage extends StatefulWidget {
+class PaymentPage extends StatefulWidget {
   @override
-  _PaymentDetailsPageState createState() => _PaymentDetailsPageState();
+  _PaymentPageState createState() => _PaymentPageState();
 }
 
-class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
+class _PaymentPageState extends State<PaymentPage> {
   bool isCreditCardSelected = false;
-  bool isPayPalSelected = true;
+  bool isHelaPaySelected = false;
+  bool isWebXPaySelected = false;
+
+  String cardNumber = '';
+  String cvv = '';
+  String expiryDate = '';
+  bool isCardValid = false;
+  bool isCvvValid = false;
+  bool isExpiryDateValid = false;
+  bool isPaymentSuccessful = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +27,10 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            // Handle back button press
           },
         ),
-        title: Text(
-          'Payment Details',
-          style: TextStyle(color: Colors.white, fontSize: 27),
+        title: Text( 'Payment',
+          style: TextStyle(color: Colors.white, fontSize: 24),
         ),
       ),
       body: SingleChildScrollView(
@@ -31,131 +38,166 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 0.5 * 16.0),
+            SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Consultation',
-                  style: TextStyle(fontSize: 16),
-                ),
-                Text(
-                  'Rs. 350',
+                Text('Consultation',
+                  style: TextStyle(fontSize: 16),),
+                Text('Rs. 350',
                   style: TextStyle(fontSize: 16),
                 ),
               ],
             ),
-            SizedBox(height: 1 * 16.0),
+            SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Discounts',
+                Text('Discounts',
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
-                Text(
-                  '-Rs. 50',
+                Text('-Rs. 50',
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
               ],
             ),
-            SizedBox(height: 1 * 16.0),
+            SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Total',
+                Text('Total',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  'Rs. 300',
+                Text('Rs. 300',
                   style: TextStyle(fontSize: 16),
                 ),
               ],
             ),
-            SizedBox(height: 1.75 * 16.0),
-            Text(
-              'Choose Payment Option',
+            SizedBox(height: 28.0),
+            Text('Choose Payment Option',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blue),
             ),
-            SizedBox(height: 1 * 16.0),
+            SizedBox(height: 16.0),
             Row(
               children: [
                 buildPaymentOption(
-                  imagePath: 'images/credit_card.png',
-                  label: 'Credit Card',
+                  imagePath: 'assets/credit_card.png',
+                  label: 'Credit/Debit Card',
                   isSelected: isCreditCardSelected,
                   onTap: () {
                     setState(() {
                       isCreditCardSelected = true;
-                      isPayPalSelected = false;
+                      isHelaPaySelected = false;
+                      isWebXPaySelected = false;
                     });
                   },
                 ),
-                SizedBox(width: 4 * 16.0),
+                SizedBox(width: 16.0),
                 buildPaymentOption(
-                  imagePath: 'images/paypal.png',
-                  label: 'PayPal',
-                  isSelected: isPayPalSelected,
+                  imagePath: 'assets/helapay.png',
+                  label: 'HelaPay',
+                  isSelected: isHelaPaySelected,
                   onTap: () {
                     setState(() {
                       isCreditCardSelected = false;
-                      isPayPalSelected = true;
+                      isHelaPaySelected = true;
+                      isWebXPaySelected = false;
+                    });
+                  },
+                ),
+                SizedBox(width: 16.0),
+                buildPaymentOption(
+                  imagePath: 'assets/webxpay.png',
+                  label: 'WEBXPAY',
+                  isSelected: isWebXPaySelected,
+                  onTap: () {
+                    setState(() {
+                      isCreditCardSelected = false;
+                      isHelaPaySelected = false;
+                      isWebXPaySelected = true;
                     });
                   },
                 ),
               ],
             ),
-            SizedBox(height: 1 * 16.0),
+            SizedBox(height: 16.0),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Card Number',
                 prefixIcon: Icon(Icons.credit_card),
+                errorText: isCardValid ? null : 'Invalid Card Number',
               ),
+              onChanged: (value) {
+                setState(() {
+                  cardNumber = value;
+                  isCardValid = isValidCardNumber(value);
+                });
+              },
             ),
-            SizedBox(height: 1 * 16.0),
+            SizedBox(height: 16.0),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Unique Code',
+                labelText: 'CVV Number',
                 prefixIcon: Icon(Icons.lock),
+                errorText: isCvvValid ? null : 'Invalid CVV Number',
               ),
+              onChanged: (value) {
+                setState(() {
+                  cvv = value;
+                  isCvvValid = isValidCvv(value);
+                });
+              },
             ),
-            SizedBox(height: 0.5* 16.0),
+            SizedBox(height: 16.0),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Currency',
-                prefixIcon: Icon(Icons.attach_money),
+                labelText: 'Expiry Date',
+                prefixIcon: Icon(Icons.calendar_today),
+                errorText: isExpiryDateValid ? null : 'Invalid Expiry Date',
               ),
+              onChanged: (value) {
+                setState(() {
+                  expiryDate = value;
+                  isExpiryDateValid = isValidExpiryDate(value);
+                });
+              },
             ),
-            SizedBox(height: 2.5 * 9.0),
+            SizedBox(height: 16.0),
             Container(
               width: double.infinity,
-              height: 2.2 * 16.0,
+              height: 48.0,
               color: Colors.blue,
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle payment button press
+                  showPaymentConfirmationDialog(context);
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 32.0),
                 ),
-                child: Text('Make The Payment', style: TextStyle(fontSize: 18),),
-                 ),
-            ),
-            SizedBox(height: 1.1* 16.0),
-            Container(
-              height: 4 * 16.0,
-              color: Colors.blue,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  NavigationIconButton(icon: Icons.home, label: 'Home'),
-                  NavigationIconButton(icon: Icons.message, label: 'Messages'),
-                  NavigationIconButton(icon: Icons.schedule, label: 'Schedule'),
-                  NavigationIconButton(icon: Icons.settings, label: 'Settings'),
-                ],
+                child: Text('Make The Payment', style: TextStyle(fontSize: 22, color: Colors.white)),
               ),
             ),
+            // SizedBox(height: 16.0),
+            // if (isPaymentSuccessful) ...[
+            //  Text(
+            //   'Payment Successful!',
+            //   style: TextStyle(fontSize: 24, color: Colors.green),
+            //  ),
+            // ],
+            SizedBox(height: 16.0),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 56.0,
+        color: Colors.blue,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            NavigationIconButton(icon: Icons.home, label: 'Home'),
+            NavigationIconButton(icon: Icons.message, label: 'Messages'),
+            NavigationIconButton(icon: Icons.schedule, label: 'Schedule'),
+            NavigationIconButton(icon: Icons.settings, label: 'Settings'),
           ],
         ),
       ),
@@ -173,8 +215,8 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
       child: Column(
         children: [
           Container(
-            width: 100, // Set the width to make the image square
-            height: 100, // Set the height to make the image square
+            width: 100,
+            height: 100,
             decoration: BoxDecoration(
               color: isSelected ? Colors.blue : Colors.transparent,
               borderRadius: BorderRadius.circular(10),
@@ -185,7 +227,7 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
                 imagePath,
                 width: 100,
                 height: 100,
-                fit: BoxFit.cover, // Adjust the fit as needed
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -201,7 +243,108 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
       ),
     );
   }
+
+  void showPaymentConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Are you sure you want to pay?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                performPayment();
+              },
+              child: Text('Yes'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('No'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void performPayment() {
+
+    if (isCardValid && isCvvValid && isExpiryDateValid) {
+
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => PaymentSuccessPage(),
+      ));
+    } else {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => TryAgainPage(),
+      ));
+
+    }
+  }
 }
+
+class PaymentSuccessPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        elevation: 0,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.check_circle,
+              color: Colors.green,
+              size: 72.0,
+            ),
+            SizedBox(height: 16.0),
+            Text(' Your Payment was successful!',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.green),
+            ),
+          ],
+
+
+        ),
+      ),
+    );
+  }
+}
+
+class TryAgainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        elevation: 0,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.error,
+              color: Colors.red,
+              size: 72.0,
+            ),
+            SizedBox(height: 16.0),
+            Text('Try Again',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.red),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
 
 class NavigationIconButton extends StatelessWidget {
   final IconData icon;
@@ -226,8 +369,23 @@ class NavigationIconButton extends StatelessWidget {
   }
 }
 
+bool isValidCardNumber(String cardNumber) {
+
+  return cardNumber.isNotEmpty && cardNumber.length == 16;
+}
+
+bool isValidCvv(String cvv) {
+
+  return cvv.isNotEmpty && cvv.length == 3;
+}
+
+bool isValidExpiryDate(String expiryDate) {
+
+  return expiryDate.isNotEmpty && expiryDate.length == 5;
+}
+
 void main() {
   runApp(MaterialApp(
-    home: PaymentDetailsPage(),
+    home: PaymentPage(),
   ));
 }

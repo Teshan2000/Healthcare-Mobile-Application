@@ -58,8 +58,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - images/paypal.png
-    - images/credit_card.png
+    - assets/helapay.png
+    - assets/webxpay.png
+    - assets/credit_card.png
 
   #   - images/a_dot_ham.jpeg
 

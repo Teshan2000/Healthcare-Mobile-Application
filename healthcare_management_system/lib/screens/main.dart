@@ -3,9 +3,11 @@ import 'package:healthcare_management_system/screens/auth.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:healthcare_management_system/utils/layout.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+//
+// }
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   //const MyApp({super.key});

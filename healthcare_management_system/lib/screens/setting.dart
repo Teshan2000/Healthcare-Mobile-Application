@@ -84,7 +84,7 @@ class TopicTile extends StatelessWidget {
         ],
       ),
       onTap: () {
-        // Handle topic tap
+
       },
     );
   }
