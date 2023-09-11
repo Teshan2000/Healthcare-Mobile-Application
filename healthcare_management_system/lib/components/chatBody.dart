@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/components/chatinputField.dart';
-//import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 
 class Body extends StatefulWidget {
@@ -32,7 +32,7 @@ class _BodyState extends State<Body> {
             // In your real implementation, this would be sent to your Laravel backend
             final receivedMessage = Message(
               text: message,
-              //fileType: fileType,
+              fileType: fileType,
               isSender: true, // Set to true for sent messages
             );
 
@@ -73,20 +73,20 @@ class MessageWidget extends StatelessWidget {
             crossAxisAlignment: message.isSender
                 ? CrossAxisAlignment.end // Align sent messages to the right
                 : CrossAxisAlignment.start, // Align received messages to the left
-            // children: [
-            //   Text(message.text),
-            //   if (message.fileType != null) // Check if there's a file attached
-            //     Padding(
-            //       padding: const EdgeInsets.only(top: 8.0),
-            //       child: Text(
-            //         'Attached ${message.fileType} file',
-            //         style: const TextStyle(
-            //           fontStyle: FontStyle.italic,
-            //           color: Colors.blue,
-            //         ),
-            //       ),
-            //     ),
-            // ],
+            children: [
+              Text(message.text),
+              if (message.fileType != null) // Check if there's a file attached
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    'Attached ${message.fileType} file',
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+            ],
           ),
         ),
       ),
@@ -96,12 +96,12 @@ class MessageWidget extends StatelessWidget {
 
 class Message {
   final String text;
-  //final FileType? fileType;
+  final FileType? fileType;
   final bool isSender; // Indicates whether the message is sent or received
 
   Message({
     required this.text,
-    //this.fileType,
+    this.fileType,
     this.isSender = false, // Default to received message
   });
 }

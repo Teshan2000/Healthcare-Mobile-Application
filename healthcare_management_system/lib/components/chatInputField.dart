@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-//import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 
 class ChatInputField extends StatefulWidget {
-  //final Function(String, FileType?) onSendMessage;
+  final Function(String, FileType?) onSendMessage;
 
   const ChatInputField({
-    Key? key, required Null Function(dynamic message, dynamic fileType) onSendMessage,
-    //required this.onSendMessage,
+    Key? key, 
+    required this.onSendMessage,
   }) : super(key: key);
 
   @override
@@ -16,21 +16,21 @@ class ChatInputField extends StatefulWidget {
 
 class _ChatInputFieldState extends State<ChatInputField> {
   final TextEditingController _messageController = TextEditingController();
-  //FileType? _fileType;
+  FileType? _fileType;
 
-  // Future<void> _openFilePicker() async {
-  //   FilePickerResult? result = await FilePicker.platform.pickFiles(
-  //     type: FileType.custom,
-  //     allowedExtensions: ['jpg', 'jpeg', 'png', 'mp4', 'pdf', 'doc'],
-  //   );
+  Future<void> _openFilePicker() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'jpeg', 'png', 'mp4', 'pdf', 'doc'],
+    );
 
-  //   if (result != null) {
-  //     PlatformFile file = result.files.first;
-  //     setState(() {
-  //       _fileType = file.extension == 'pdf' ? FileType.custom : null;
-  //     });
-  //   }
-  // }
+    if (result != null) {
+      PlatformFile file = result.files.first;
+      setState(() {
+        _fileType = file.extension == 'pdf' ? FileType.custom : null;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +54,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
           children: [
             IconButton(
               icon: const Icon(Icons.attach_file),
-              onPressed: () {},
-              //_openFilePicker,
+              onPressed: _openFilePicker,
             ),
             const SizedBox(width: Config.defaultPadding),
             Expanded(
@@ -90,10 +89,10 @@ class _ChatInputFieldState extends State<ChatInputField> {
               ),
               onPressed: () {
                 String message = _messageController.text.trim();
-                //widget.onSendMessage(message, _fileType);
+                widget.onSendMessage(message, _fileType);
                 _messageController.clear();
                 setState(() {
-                //  _fileType = null;
+                 _fileType = null;
                 });
               },
             ),
