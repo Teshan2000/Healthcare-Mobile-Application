@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/models/authModel.dart';
+import 'package:healthcare_management_system/providers/dioProvider.dart';
 import '../main.dart';
 import '../utils/config.dart';
 import 'button.dart';
+import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -64,23 +67,23 @@ class LoginFormState extends State<LoginForm> {
                           ))),
           ),
           Config.spaceSmall,
-          // Consumer<AuthModel>(
-          //   builder: (context, auth, child) {
-          Button(
-            width: double.infinity,
-            title: 'Sign In',
-            onPressed: () async {
-                  // final token = await DioProvider()
-                  //     .getToken(_emailController.text, _passController.text);
+          Consumer<AuthModel>(
+            builder: (context, auth, child) {
+              return Button(
+                width: double.infinity,
+                title: 'Sign In',
+                onPressed: () async {
+                  final token = await DioProvider()
+                      .getToken(_emailController.text, _passController.text);          
 
-                  // if(token) {
-                  //   auth.loginSuccess();
-                  //   MyApp.navigatorKey.currentState!.pushNamed('login');
-                  // }
-                  //Navigator.of(context).pushNamed("login");
-            MyApp.navigatorKey.currentState!.pushNamed('login');
-            },
-            disable: false,
+                  if (token) {
+                    auth.loginSuccess();
+                    MyApp.navigatorKey.currentState!.pushNamed('login');
+                  }                  
+                },
+                disable: false,
+              );
+            }
           ),
               
           
