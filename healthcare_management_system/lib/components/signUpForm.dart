@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/models/authModel.dart';
+import 'package:healthcare_management_system/providers/dioProvider.dart';
+import 'package:provider/provider.dart';
 import '../main.dart';
 import '../utils/config.dart';
 import 'button.dart';
@@ -77,22 +80,31 @@ class _SignUpFormState extends State<SignUpForm> {
                           ))),
           ),
           Config.spaceSmall,
-          Button(
-            width: double.infinity,
-            title: 'Sign Up',
-            onPressed: () async {
-                  // final token = await DioProvider()
-                  //     .getToken(_emailController.text, _passController.text);
+          Consumer<AuthModel>(builder: (context, auth, child) {
+            return Button(
+              width: double.infinity,
+              title: 'Sign Up',
+              onPressed: () async {
+                final userRegistration = await DioProvider().registerUser(
+                    _nameController.text,
+                    _emailController.text,
+                    _passController.text);
 
-                  // if(token) {
-                  //   auth.loginSuccess();
-                  //   MyApp.navigatorKey.currentState!.pushNamed('login');
-                  // }
-                  //Navigator.of(context).pushNamed("login");
-            MyApp.navigatorKey.currentState!.pushNamed('login');
-            },
-            disable: false,
-          ),
+                if (userRegistration) {
+                  final token = await DioProvider()
+                      .getToken(_emailController.text, _passController.text);
+
+                  if (token) {
+                    auth.loginSuccess();
+                    MyApp.navigatorKey.currentState!.pushNamed('login');
+                  }
+                } else {
+                  print('Register not successful!');
+                }
+              },
+              disable: false,
+            );
+          }),
         ],
       ),
     );
