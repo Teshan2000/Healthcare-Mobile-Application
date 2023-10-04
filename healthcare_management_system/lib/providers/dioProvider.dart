@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DioProvider {
   //to get token
@@ -9,7 +10,11 @@ class DioProvider {
           data: {'email': email, 'password': password});
 
       if (response.statusCode == 200 && response.data != '') {
-        return response.data;
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('token', response.data);
+        return true;
+      } else {
+        return false;
       }
     } catch (error) {
       return error;

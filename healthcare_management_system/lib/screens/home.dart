@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/providers/dioProvider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../components/customAppbar.dart';
 import '../components/doctorCard.dart';
 import '../utils/config.dart';
@@ -58,26 +62,26 @@ class HomeState extends State<Home> {
     },
   ];
 
-  // Future<void> getData() async {
-  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   final token = prefs.getString('token') ?? '';
+  Future<void> getData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token') ?? '';
 
-  //   if (token.isNotEmpty && token != '') {
-  //     final response = await DioProvider().getUser(token);
-  //     if (response != null) {
-  //       setState(() {
-  //         user = json.decode(response);
-  //         //print(user);
-  //       });
-  //     }
-  //   }
-  // }
+    if (token.isNotEmpty && token != '') {
+      final response = await DioProvider().getUser(token);
+      if (response != null) {
+        setState(() {
+          user = json.decode(response);
+          print(user);
+        });
+      }
+    }
+  }
 
-  // @override
-  // void initState() {    
-  //   getData();
-  //   super.initState();
-  // }
+  @override
+  void initState() {    
+    getData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +103,11 @@ class HomeState extends State<Home> {
           )
         ],
       ),
-      body: Padding(
+      body: user.isEmpty 
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+      : Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 15,
@@ -128,7 +136,6 @@ class HomeState extends State<Home> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    //Config.spaceSmall,
                     const Text(
                       "22 Years Old",
                       style: TextStyle(
@@ -138,17 +145,7 @@ class HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                Config.spaceSmall,
-                /*const Center(
-                  child: Text(
-                    "Hello Amanda!",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),*/
-                Config.spaceSmall,
+                Config.spaceMedium,
                 Text(
                   "Choose Your Symptoms",
                   style: TextStyle(
@@ -212,16 +209,6 @@ class HomeState extends State<Home> {
                     return const DoctorCard();
                   }),
                 )
-                /*Row(
-                  children: [
-                    Column(children: [
-                      SymptomsCard(),
-                    ]),
-                    Column(children: [
-                      SymptomsCard(),
-                    ]),
-                  ],
-                )*/
               ],
             ),
           ),
