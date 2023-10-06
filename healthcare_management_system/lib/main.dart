@@ -62,7 +62,6 @@ class MyApp extends StatelessWidget {
         'settings': (context) => Settings(),
         //'user':(context) => const AddUserDetails(),
       },
-      //home: const MyHomePage(title: 'Home Page'),
     );
   }
 }

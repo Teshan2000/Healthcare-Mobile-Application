@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Doctor;
-use App\Models\Patient;
+use App\Models\DoctorDetails;
+use App\Models\PatientDetails;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +22,7 @@ class UsersController extends Controller
         $user = array();
         $user = Auth::user();
         $doctor = User::where('type', 'doctor')->get();
-        $doctorData = Doctor::all();
+        $doctorData = DoctorDetails::all();
 
         foreach($doctorData as $data){
             foreach($doctor as $info){
@@ -82,7 +82,7 @@ class UsersController extends Controller
             'password'=>Hash::make($request->password),
         ]);
 
-        $userInfo = Patient::create([
+        $userInfo = PatientDetails::create([
             'patient_id'=>$user->id,
             'status'=>'active',
         ]);

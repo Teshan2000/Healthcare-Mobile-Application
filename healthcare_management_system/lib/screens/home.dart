@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -89,7 +88,7 @@ class HomeState extends State<Home> {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Welcome User!",
-        icon: const Icon(Icons.menu),
+        icon: const Icon(Icons.settings_rounded),
         actions: [
           IconButton(
             onPressed: () async {},
