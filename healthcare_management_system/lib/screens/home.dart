@@ -1,6 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/components/appDrawer.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';
+import 'package:healthcare_management_system/screens/appointments.dart';
+import 'package:healthcare_management_system/screens/settings.dart';
+import 'package:healthcare_management_system/screens/symptomsPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../components/customAppbar.dart';
 import '../components/doctorCard.dart';
@@ -101,6 +105,49 @@ class HomeState extends State<Home> {
             ),
           )
         ],
+      ),
+      drawer: AppDrawer(
+        userName: 'Uma Priyani',
+        profilePictureUrl: 'Assets/profile1.jpg',
+        onProfilePressed: () {
+          // Navigate to the user's profile page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddUserDetails(),
+            ),
+          );
+        },
+        onAppointmentPressed: () {
+          // Navigate to the user's profile page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Appointments(),
+            ),
+          );
+        },
+        onSymptomsPressed: () {
+          // Navigate to the user's profile page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SymptomsPage(),
+            ),
+          );
+        },
+        onSettingsPressed: () {
+          // Navigate to the user's profile page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Settings(),
+            ),
+          );
+        },
+        onLogoutPressed: () {
+          // Handle logout here (e.g., clear user session, navigate to login page)
+        },
       ),
       body: user.isEmpty 
         ? const Center(
