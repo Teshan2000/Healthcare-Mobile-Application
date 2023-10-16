@@ -5,6 +5,7 @@ import 'package:healthcare_management_system/providers/dioProvider.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
 import 'package:healthcare_management_system/screens/settings.dart';
 import 'package:healthcare_management_system/screens/symptomsPage.dart';
+import 'package:healthcare_management_system/screens/userDetails.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../components/customAppbar.dart';
 import '../components/doctorCard.dart';
@@ -114,7 +115,7 @@ class HomeState extends State<Home> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddUserDetails(),
+              builder: (context) => UserDetails(),
             ),
           );
         },
