@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 class DoctorCard extends StatelessWidget {
   const DoctorCard({
     Key? key,
-    /*required this.doctor,
-    required this.isFav,*/
+    required this.route,
+    required this.doctor,
+    //required this.isFav,
   }) : super(key: key);
 
-  /*final Map<String, dynamic> doctor;
-  final bool isFav;*/
+  final String route;
+  final Map<String, dynamic> doctor;
+  //final bool isFav;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +29,9 @@ class DoctorCard extends StatelessWidget {
             children: [
               SizedBox(
                 width: Config.widthSize * 0.28,
-                child: Image.asset(
-                  "Assets/doctor_3.jpg",
+                child: Image.network(
+                  //"Assets/doctor_3.jpg",
+                  "http://172.29.32.1:80${doctor['doctor_profile']}",
                   fit: BoxFit.fill,
                 ),
               ),
@@ -39,17 +42,19 @@ class DoctorCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const Text(
-                        "Dr. Nishantha Kumara",
-                        style: TextStyle(
+                      Text(
+                        //"Dr. Nishantha Kumara",
+                        "${doctor['doctor_name']}",
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const Spacer(),
-                      const Text(
-                        "Fever",
-                        style: TextStyle(
+                      Text(
+                        //"Fever",
+                        "${doctor['category']}",
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
@@ -88,12 +93,13 @@ class DoctorCard extends StatelessWidget {
           ),
         ),
         onTap: () {
-          MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
-              builder: (_) => const DoctorDetails(
-                    /*doctor: doctor,
-                    isFav: isFav,*/
-              )
-          ));
+          // MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
+          //     builder: (_) => const DoctorDetails(
+          //           /*doctor: doctor,
+          //           isFav: isFav,*/
+          //     )
+          // ));
+          Navigator.of(context).pushNamed(route, arguments: doctor);
         },
       ),
     );
