@@ -137,6 +137,15 @@ class HomeState extends State<Home> {
             ),
           );
         },
+        onNotificationsPressed: () {
+          // Navigate to the user's profile page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Appointments(),
+            ),
+          );
+        },
         onSettingsPressed: () {
           // Navigate to the user's profile page
           Navigator.push(

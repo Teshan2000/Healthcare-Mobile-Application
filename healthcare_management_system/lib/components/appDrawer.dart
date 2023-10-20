@@ -10,6 +10,7 @@ class AppDrawer extends StatelessWidget {
   final Function() onLogoutPressed;
   final Function() onAppointmentPressed;
   final Function() onSymptomsPressed;
+  final Function() onNotificationsPressed;
   final Function() onSettingsPressed;
 
   AppDrawer({
@@ -19,6 +20,7 @@ class AppDrawer extends StatelessWidget {
     required this.onLogoutPressed,
     required this.onAppointmentPressed,
     required this.onSymptomsPressed,
+    required this.onNotificationsPressed,
     required this.onSettingsPressed,
   });
 
@@ -35,7 +37,7 @@ class AppDrawer extends StatelessWidget {
               backgroundImage: NetworkImage(profilePictureUrl),
             ),
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
+              color: Colors.blue,
             ),
           ),
           ListTile(
@@ -51,6 +53,11 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.sick),
             title: Text('Symptoms'),
+            onTap: onSymptomsPressed,
+          ),
+          ListTile(
+            leading: Icon(Icons.notifications),
+            title: Text('Notifications'),
             onTap: onSymptomsPressed,
           ),
           ListTile(
