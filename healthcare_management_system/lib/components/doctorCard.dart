@@ -1,5 +1,3 @@
-import 'package:healthcare_management_system/main.dart';
-import 'package:healthcare_management_system/screens/doctorDetails.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:flutter/material.dart';
 
@@ -29,9 +27,9 @@ class DoctorCard extends StatelessWidget {
             children: [
               SizedBox(
                 width: Config.widthSize * 0.28,
+                height: Config.heightSize * 0.28,  
                 child: Image.network(
-                  //"Assets/doctor_3.jpg",
-                  "http://172.29.32.1:80${doctor['doctor_profile']}",
+                  "http://172.29.32.1:8000${doctor['doctor_profile']}",
                   fit: BoxFit.fill,
                 ),
               ),
@@ -43,8 +41,7 @@ class DoctorCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        //"Dr. Nishantha Kumara",
-                        "${doctor['doctor_name']}",
+                        "Dr. ${doctor['doctor_name']}",
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -52,7 +49,6 @@ class DoctorCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        //"Fever",
                         "${doctor['category']}",
                         style: const TextStyle(
                           fontSize: 14,

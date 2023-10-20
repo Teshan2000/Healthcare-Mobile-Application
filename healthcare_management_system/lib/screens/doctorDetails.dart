@@ -94,14 +94,12 @@ class DetailHead extends StatelessWidget {
             Config.spaceMedium,
             CircleAvatar(
               radius: 65.0,
-              //backgroundImage: AssetImage("Assets/doctor_9.jpg"),
-              backgroundImage: NetworkImage("http://172.29.32.1:80${doctor['doctor_profile']}",),
+              backgroundImage: NetworkImage("http://172.29.32.1:8000${doctor['doctor_profile']}",),
               backgroundColor: Colors.white,
             ),
             Config.spaceMedium,
             Text(
-              //"Dr. Wasana Kumari",
-              "${doctor['doctor_name']}",
+              "Dr. ${doctor['doctor_name']}",
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 25.0,
@@ -112,7 +110,6 @@ class DetailHead extends StatelessWidget {
             SizedBox(
               width: Config.widthSize * 0.75,
               child: Text(
-                //"MBBS (International Medical University, Russia), MRCP (Royal College of Physicians, United Kingdom)",
                 "${doctor['bio_data']}",
                 style: const TextStyle(
                   color: Colors.grey,
@@ -207,13 +204,11 @@ class DoctorInfo extends StatelessWidget {
       children: <Widget>[
         InfoCard(
             label: "Patients",
-            //value: "98",
             value: "$patients",
         ),
         const SizedBox(width: 15,),
         InfoCard(
           label: "Experience",
-          //value: "6 Years",
           value: "$exp Years",
         ),
         const SizedBox(width: 15,),

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\DoctorDetails;
 use App\Models\PatientDetails;
-use Dotenv\Exception\ValidationException;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +27,8 @@ class UsersController extends Controller
         foreach($doctorData as $data){
             foreach($doctor as $info){
                 if($data['doctor_id'] == $info['id']){
-                    $data['doctor_name'] == $info['name'];
-                    $data['doctor_profile'] == $info['profile_photo_path'];
+                    $data['doctor_name'] = $info['name'];
+                    $data['doctor_profile'] = $info['profile_photo_path'];
                 }
             }
         }
