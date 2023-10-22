@@ -94,7 +94,7 @@ class DetailHead extends StatelessWidget {
             Config.spaceMedium,
             CircleAvatar(
               radius: 65.0,
-              backgroundImage: NetworkImage("http://172.29.32.1:8000${doctor['doctor_profile']}",),
+              backgroundImage: NetworkImage("http://172.31.48.1:8000${doctor['doctor_profile']}",),
               backgroundColor: Colors.white,
             ),
             Config.spaceMedium,

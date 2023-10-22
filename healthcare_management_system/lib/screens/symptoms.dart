@@ -128,7 +128,7 @@ class Symptoms extends StatelessWidget {
                 ),
                 Column(
                   children: List.generate(10, (index) {
-                    return const DoctorCard();
+                    return const DoctorCard(route: '', doctor: {},);
                   }),
                 )
               ]),

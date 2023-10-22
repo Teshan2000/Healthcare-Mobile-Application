@@ -6,7 +6,7 @@ class DioProvider {
   //to get token
   Future<dynamic> getToken(String email, String password) async {
     try {
-      var response = await Dio().post('http://172.29.32.1:8000/api/login',
+      var response = await Dio().post('http://172.31.48.1:8000/api/login',
           data: {'email': email, 'password': password});
 
       if (response.statusCode == 200 && response.data != '') {
@@ -24,7 +24,7 @@ class DioProvider {
 //to get user data
   Future<dynamic> getUser(String token) async {
     try {
-      var user = await Dio().post('http://172.29.32.1:8000/api/user',
+      var user = await Dio().post('http://172.31.48.1:8000/api/user',
         options: Options(headers: {'Authorization': 'Bearer $token'}));
 
       if (user.statusCode == 200 && user.data != '') {
@@ -38,7 +38,7 @@ class DioProvider {
   //to register new user 
   Future<dynamic> registerUser(String username, String email, String password) async {
     try {
-      var user = await Dio().post('http://172.29.32.1:8000/api/register',
+      var user = await Dio().post('http://172.31.48.1:8000/api/register',
           data: {'name': username, 'email': email, 'password': password});
 
       if (user.statusCode == 201 && user.data != '') {

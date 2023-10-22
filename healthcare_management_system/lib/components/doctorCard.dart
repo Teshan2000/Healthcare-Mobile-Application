@@ -29,7 +29,7 @@ class DoctorCard extends StatelessWidget {
                 width: Config.widthSize * 0.28,
                 height: Config.heightSize * 0.28,  
                 child: Image.network(
-                  "http://172.29.32.1:8000${doctor['doctor_profile']}",
+                  "http://172.31.48.1:8000${doctor['doctor_profile']}",
                   fit: BoxFit.fill,
                 ),
               ),
