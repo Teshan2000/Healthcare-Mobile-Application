@@ -14,16 +14,18 @@ class JetstreamServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
+     * @return void
      */
-    public function register(): void
+    public function register()
     {
         //
     }
 
     /**
      * Bootstrap any application services.
+     * @return void
      */
-    public function boot(): void
+    public function boot()
     {
         Fortify::authenticateUsing(function(Request $request){
             $user = User::where('email', $request->email)->first();

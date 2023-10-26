@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('patient_details', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id')->unique();
-            $table->longText('bio_data')->nullable();
-            $table->string('status')->nullable();
+            $table->string('bio_data')->nullable();
+            $table->unsignedInteger('status')->nullable();
             $table->foreign('patient_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

@@ -185,8 +185,8 @@ class HomeState extends State<Home> {
                       ),
                     ),
                     Text( 
-                      //"Amanda",
-                      user['name'],
+                      "Amanda",
+                      //user['name'],
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -261,11 +261,11 @@ class HomeState extends State<Home> {
                   ),
                 ),
                 Column(
-                  // children: List.generate(10, (index) {
-                  children: List.generate(user['doctor'].length, (index) {
+                  children: List.generate(10, (index) {
+                  //children: List.generate(user['doctor'].length, (index) {
                     return DoctorCard(
-                      route: 'doctor', 
-                      doctor: user['doctor'][index],
+                      // route: 'doctor', 
+                      // doctor: user['doctor'][index],
                     ); 
                   }),
                 )

@@ -1,3 +1,5 @@
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/models/authModel.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';
@@ -85,21 +87,25 @@ class _SignUpFormState extends State<SignUpForm> {
               width: double.infinity,
               title: 'Sign Up',
               onPressed: () async {
-                final userRegistration = await DioProvider().registerUser(
-                    _nameController.text,
-                    _emailController.text,
-                    _passController.text);
+                try {
+                  final userRegistration = await DioProvider().registerUser(
+                      _nameController.text,
+                      _emailController.text,
+                      _passController.text);
 
-                if (userRegistration) {
-                  final token = await DioProvider()
-                      .getToken(_emailController.text, _passController.text);
+                  if (userRegistration != null && userRegistration.statusCode == 200) {
+                    final token = await DioProvider()
+                        .getToken(_emailController.text, _passController.text);
 
-                  if (token) {
-                    auth.loginSuccess();
-                    MyApp.navigatorKey.currentState!.pushNamed('login');
+                    if (token != null && token.statusCode == 200) {
+                      auth.loginSuccess();
+                      MyApp.navigatorKey.currentState!.pushNamed('login');
+                    }
+                  } else {
+                    print('Register not successful!');
                   }
-                } else {
-                  print('Register not successful!');
+                } on DioError catch (e) {
+                  print('Dio error occurred: $e');
                 }
               },
               disable: false,
@@ -110,3 +116,5 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 }
+
+

@@ -48,9 +48,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     /**
      * Update the given verified user's profile information.
      *
-     * @param  array<string, string>  $input
+     * @param  mixed  $user
+     * @param  array  $input
+     * @return void
+     * 
      */
-    protected function updateVerifiedUser($user, array $input): void
+    protected function updateVerifiedUser($user, array $input)
     {
         $user->forceFill([
             'name' => $input['name'],

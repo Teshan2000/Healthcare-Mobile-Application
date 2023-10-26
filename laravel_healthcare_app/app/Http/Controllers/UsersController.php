@@ -17,26 +17,26 @@ class UsersController extends Controller
      * 
      *  @return \Illuminate\Http\Response 
      */
-    public function index()
-    {
-        $user = array();
-        $user = Auth::user();
-        $doctor = User::where('type', 'doctor')->get();
-        $doctorData = DoctorDetails::all();
+    // public function index()
+    // {
+    //     $user = array();
+    //     $user = Auth::user();
+    //     $doctor = User::where('type', 'doctor')->get();
+    //     $doctorData = DoctorDetails::all();
 
-        foreach($doctorData as $data){
-            foreach($doctor as $info){
-                if($data['doctor_id'] == $info['id']){
-                    $data['doctor_name'] = $info['name'];
-                    $data['doctor_profile'] = $info['profile_photo_path'];
-                }
-            }
-        }
+    //     foreach($doctorData as $data){
+    //         foreach($doctor as $info){
+    //             if($data['doctor_id'] == $info['id']){
+    //                 $data['doctor_name'] = $info['name'];
+    //                 $data['doctor_profile'] = $info['profile_photo_path'];
+    //             }
+    //         }
+    //     }
 
-        $user['doctor'] = $doctorData;
+    //     $user['doctor'] = $doctorData;
 
-        return $user;
-    }
+    //     return $user;
+    // }
 
 
      /**
