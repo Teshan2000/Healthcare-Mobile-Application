@@ -33,7 +33,7 @@ class Success extends StatelessWidget {
               child: Button(
                 width: double.infinity,
                 title: 'Back to Home Page',
-                onPressed: () => Navigator.of(context).pushNamed('home'),
+                onPressed: () => Navigator.of(context).pushNamed('login'),
                 disable: false,
               ),
             )

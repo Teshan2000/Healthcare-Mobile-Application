@@ -1,7 +1,11 @@
 import 'package:healthcare_management_system/components/button.dart';
 import 'package:healthcare_management_system/components/customAppbar.dart';
+import 'package:healthcare_management_system/main.dart';
+import 'package:healthcare_management_system/models/dateTimeConvert.dart';
+import 'package:healthcare_management_system/providers/dioProvider.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Schedule extends StatefulWidget {
@@ -13,14 +17,25 @@ class Schedule extends StatefulWidget {
 
 class ScheduleState extends State<Schedule> {
 
-    CalendarFormat _format = CalendarFormat.month;
-    DateTime _focusDay = DateTime.now();
-    DateTime _currentDay = DateTime.now();
-    int? _currentIndex;
-    bool _isWeekend = false;
-    bool _dateSelected = false;
-    bool _timeSelected = false;
-    //String? token;
+  CalendarFormat _format = CalendarFormat.month;
+  DateTime _focusDay = DateTime.now();
+  DateTime _currentDay = DateTime.now();
+  int? _currentIndex;
+  bool _isWeekend = false;
+  bool _dateSelected = false;
+  bool _timeSelected = false;
+  String? token;
+
+  Future<void> getToken() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = prefs.getString('token') ?? '';
+  }
+
+  @override
+  void initState() {
+    getToken();
+    super.initState();
+  }
 
     //table calendar
     Widget _tableCalendar() {
@@ -65,6 +80,7 @@ class ScheduleState extends State<Schedule> {
     @override
     Widget build(BuildContext context) {
     Config().init(context);
+    final doctor = ModalRoute.of(context)!.settings.arguments as Map;
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Schedule Your Appointment",
@@ -180,7 +196,16 @@ class ScheduleState extends State<Schedule> {
                     width: double.infinity,
                     title: 'Schedule Appointment',
                     onPressed: () async {
-                      Navigator.of(context).pushNamed("payment",);
+                      final getDate = DateConverted.getDate(_currentDay);
+                      final getDay = DateConverted.getDay(_currentDay.weekday);
+                      final getTime = DateConverted.getTime(_currentIndex!);
+
+                      final booking = await DioProvider()
+                          .bookAppointment(getDate, getDay, getTime, doctor['doctor_id'], token!);
+
+                      if (booking == 200) {
+                        MyApp.navigatorKey.currentState!.pushNamed("payment");
+                      } 
                     },
                     disable: _timeSelected && _dateSelected ? false : true,
                   ),

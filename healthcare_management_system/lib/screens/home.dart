@@ -93,9 +93,9 @@ class HomeState extends State<Home> {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Welcome User!",
-        icon: const Icon(Icons.settings_rounded),
         actions: [
           IconButton(
+            color: Colors.white,
             onPressed: () async {},
             icon: const Icon(
               //icon: FaIcon(
@@ -108,10 +108,10 @@ class HomeState extends State<Home> {
         ],
       ),
       drawer: AppDrawer(
-        userName: 'Uma Priyani',
+        userName: "Uma Priyani",
+        //user['name'],
         profilePictureUrl: 'Assets/profile1.jpg',
         onProfilePressed: () {
-          // Navigate to the user's profile page
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -120,7 +120,6 @@ class HomeState extends State<Home> {
           );
         },
         onAppointmentPressed: () {
-          // Navigate to the user's profile page
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -129,7 +128,6 @@ class HomeState extends State<Home> {
           );
         },
         onSymptomsPressed: () {
-          // Navigate to the user's profile page
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -138,7 +136,6 @@ class HomeState extends State<Home> {
           );
         },
         onNotificationsPressed: () {
-          // Navigate to the user's profile page
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -147,7 +144,6 @@ class HomeState extends State<Home> {
           );
         },
         onSettingsPressed: () {
-          // Navigate to the user's profile page
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -155,9 +151,7 @@ class HomeState extends State<Home> {
             ),
           );
         },
-        onLogoutPressed: () {
-          // Handle logout here (e.g., clear user session, navigate to login page)
-        },
+        onLogoutPressed: () {},
       ),
       body: user.isEmpty 
         ? const Center(
@@ -260,12 +254,11 @@ class HomeState extends State<Home> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Column(
-                  children: List.generate(10, (index) {
-                  //children: List.generate(user['doctor'].length, (index) {
+                Column(                  
+                  children: List.generate(user['doctor'].length, (index) {
                     return DoctorCard(
-                      // route: 'doctor', 
-                      // doctor: user['doctor'][index],
+                      route: 'doctor', 
+                      doctor: user['doctor'][index],
                     ); 
                   }),
                 )

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/auth.dart';
+import 'package:healthcare_management_system/utils/config.dart';
 
 class AppDrawer extends StatelessWidget {
   //AuthService authService = AuthService();
 
-  final String userName; // User's name
-  final String profilePictureUrl; // URL to the user's profile picture
-  final Function() onProfilePressed; // Function to navigate to the profile page
+  final String userName; 
+  final String profilePictureUrl; 
+  final Function() onProfilePressed; 
   final Function() onLogoutPressed;
   final Function() onAppointmentPressed;
   final Function() onSymptomsPressed;
@@ -32,9 +33,9 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: Text(userName),
-            accountEmail: null, // Add user's email here if needed
+            accountEmail: null, 
             currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(profilePictureUrl),
+              backgroundImage: AssetImage(profilePictureUrl),
             ),
             decoration: BoxDecoration(
               color: Colors.blue,
@@ -65,6 +66,7 @@ class AppDrawer extends StatelessWidget {
             title: Text('Settings'),
             onTap: onSettingsPressed,
           ),
+          Config.spaceMedium,    
           ListTile(
             onTap: () async {
               showDialog(

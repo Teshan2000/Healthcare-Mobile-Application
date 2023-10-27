@@ -42,7 +42,7 @@ class PaymentState extends State<Payment> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 12.0),
+            const SizedBox(height: 22.0),
             const Text(
               'Choose Payment Option',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
@@ -90,7 +90,7 @@ class PaymentState extends State<Payment> {
                 ),
               ],
             ),
-            const SizedBox(height: 30.0),
+            const SizedBox(height: 40.0),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Card Number',
@@ -132,17 +132,17 @@ class PaymentState extends State<Payment> {
                 });
               },
             ),
-            const SizedBox(height: 24.0),
+            const SizedBox(height: 35.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 Text(
                   'Channeling',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 18),
                 ),
                 Text(
                   'Rs. 350',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 18),
                 ),
               ],
             ),
@@ -152,11 +152,11 @@ class PaymentState extends State<Payment> {
               children: const [
                 Text(
                   'Discounts',
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  style: TextStyle(fontSize: 18, color: Colors.grey),
                 ),
                 Text(
                   '- Rs. 50',
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  style: TextStyle(fontSize: 18, color: Colors.grey),
                 ),
               ],
             ),
@@ -166,15 +166,15 @@ class PaymentState extends State<Payment> {
               children: const [
                 Text(
                   'Total',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   'Rs. 300',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 18),
                 ),
               ],
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 8.0),
             Padding(
               padding: const EdgeInsets.all(20),
               child: Button(

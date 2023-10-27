@@ -34,6 +34,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ),
       ),
       //if icon is not set, return null
+      centerTitle: true,
       leading: widget.icon != null ? Container(
         margin: const EdgeInsets.symmetric(
           horizontal: 10, 

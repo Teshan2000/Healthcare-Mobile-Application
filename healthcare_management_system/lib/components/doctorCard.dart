@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 class DoctorCard extends StatelessWidget {
   const DoctorCard({
     Key? key,
-    // required this.route,
-    // required this.doctor,
+    required this.route,
+    required this.doctor,
     //required this.isFav,
   }) : super(key: key);
 
-  // final String route;
-  // final Map<String, dynamic> doctor;
+  final String route;
+  final Map<String, dynamic> doctor;
   //final bool isFav;
 
   @override
@@ -30,10 +30,10 @@ class DoctorCard extends StatelessWidget {
               SizedBox(
                 width: Config.widthSize * 0.28,
                 height: Config.heightSize * 0.28,  
-                child: Image.asset(
-                  "Assets/doctor_3.jpg",
-                  //"http://172.21.160.1:8000${doctor['doctor_profile']}",
-                  fit: BoxFit.fill,
+                child: Image.network(
+                  //"Assets/doctor_3.jpg",
+                  "http://172.21.160.1:8000${doctor['doctor_profile']}",
+                  fit: BoxFit.cover,
                 ),
               ),
               Flexible(
@@ -44,8 +44,8 @@ class DoctorCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Dr. Nishantha Kumara",
-                        //"Dr. ${doctor['doctor_name']}",
+                        //"Dr. Nishantha Kumara",
+                        "Dr. ${doctor['doctor_name']}",
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -53,8 +53,8 @@ class DoctorCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        "Fever",
-                        //"${doctor['category']}",
+                        //"Fever",
+                        "${doctor['category']}",
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
@@ -93,16 +93,10 @@ class DoctorCard extends StatelessWidget {
             ],
           ),
         ),
-        onTap: () {
-          MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
-              builder: (_) => const DoctorDetails(
-                    /*doctor: doctor,
-                    isFav: isFav,*/
-              )
-          ));
-          // Navigator.of(context).pushNamed(
-          //   route, arguments: doctor
-          // );
+        onTap: () {          
+          Navigator.of(context).pushNamed(
+            route, arguments: doctor
+          );
         },
       ),
     );

@@ -34,7 +34,6 @@ class CreateNewUser implements CreatesNewUsers
             'type' => 'doctor',
             'password' => Hash::make($input['password']),
         ]);
-
     
         $doctorInfo = DoctorDetails::create([
             'doctor_id' => $user->id,

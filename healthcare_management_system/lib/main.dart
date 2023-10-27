@@ -63,7 +63,6 @@ class MyApp extends StatelessWidget {
           'payment': (context) => Payment(),
           'success': (context) => const Success(),
           'settings': (context) => Settings(),
-          //'user':(context) => const AddUserDetails(),
         },
       ),
     );

@@ -87,25 +87,21 @@ class _SignUpFormState extends State<SignUpForm> {
               width: double.infinity,
               title: 'Sign Up',
               onPressed: () async {
-                try {
-                  final userRegistration = await DioProvider().registerUser(
-                      _nameController.text,
-                      _emailController.text,
-                      _passController.text);
+                final userRegistration = await DioProvider().registerUser(
+                    _nameController.text,
+                    _emailController.text,
+                    _passController.text);
 
-                  if (userRegistration != null && userRegistration.statusCode == 200) {
-                    final token = await DioProvider()
-                        .getToken(_emailController.text, _passController.text);
+                if (userRegistration) {
+                  final token = await DioProvider()
+                      .getToken(_emailController.text, _passController.text);
 
-                    if (token != null && token.statusCode == 200) {
-                      auth.loginSuccess();
-                      MyApp.navigatorKey.currentState!.pushNamed('login');
-                    }
-                  } else {
-                    print('Register not successful!');
+                  if (token) {
+                    auth.loginSuccess();
+                    MyApp.navigatorKey.currentState!.pushNamed('login');
                   }
-                } on DioError catch (e) {
-                  print('Dio error occurred: $e');
+                } else {
+                  print('Register not successful!');
                 }
               },
               disable: false,
