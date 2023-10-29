@@ -4,14 +4,15 @@ import '../components/doctorCard.dart';
 import '../utils/config.dart';
 
 class Symptoms extends StatelessWidget {
-  const Symptoms({
+  Symptoms({
     Key? key,
-    /*required this.doctor,
-    required this.isFav,*/
+    required this.doctor,
+    //required this.isFav,
   }) : super(key: key);
 
-  /*final Map<String, dynamic> doctor;
-  final bool isFav;*/
+  final Map<String, dynamic> doctor;
+  final Map<String, dynamic> user = {};
+  //final bool isFav;
 
   @override
   Widget build(BuildContext context) {
@@ -127,10 +128,11 @@ class Symptoms extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  children: List.generate(10, (index) {
-                    return const DoctorCard(
-                      route: '', doctor: {},
-                    );
+                  children: List.generate(user['doctor'].length, (index) {
+                    return DoctorCard(
+                      route: 'doctor', 
+                      doctor: user['doctor'][index],
+                    ); 
                   }),
                 )
               ]),

@@ -1,5 +1,4 @@
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/models/authModel.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';

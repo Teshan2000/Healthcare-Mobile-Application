@@ -196,12 +196,34 @@ class HomeState extends State<Home> {
                   ],
                 ),
                 Config.spaceMedium,
-                Text(
-                  "Choose Your Symptoms",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Choose Your Symptoms",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SymptomsPage(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "View All",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Config.spaceSmall,
                 Container(
