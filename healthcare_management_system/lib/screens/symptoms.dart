@@ -5,13 +5,14 @@ import '../utils/config.dart';
 
 class Symptoms extends StatelessWidget {
   Symptoms({
-    Key? key,
-    required this.doctor,
+    Key? key, 
+    //required Map doctor,
+    //required this.doctor,
     //required this.isFav,
   }) : super(key: key);
 
-  final Map<String, dynamic> doctor;
-  final Map<String, dynamic> user = {};
+  Map<String, dynamic> doctor = {};
+  Map<String, dynamic> user = {};
   //final bool isFav;
 
   @override

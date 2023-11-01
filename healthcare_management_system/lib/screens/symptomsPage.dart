@@ -361,7 +361,7 @@ class _SymptomsPageState extends State<SymptomsPage> {
           ),
           onTap: () {
             MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
-                builder: (_) => Symptoms(doctor: {},)));
+                builder: (_) => Symptoms()));
           },
         ),
       ),

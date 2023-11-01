@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/providers/dioProvider.dart';
 import 'package:rating_dialog/rating_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../components/customAppbar.dart';
 import '../utils/config.dart';
 
@@ -14,38 +17,26 @@ enum FilterStatus { Upcoming, Completed, Canceled }
 class AppointmentsState extends State<Appointments> {
   FilterStatus status = FilterStatus.Upcoming; 
   Alignment _alignment = Alignment.centerLeft;
-  List<dynamic> schedules = [
-    {
-      "doctorName":"Kasun Perera",
-      "doctorProfile":"Assets/doctor_2.jpg",
-      "category":"Cardiology",
-      "status":FilterStatus.Upcoming,
-    },
-    {
-      "doctorName":"Hana Gamage",
-      "doctorProfile":"Assets/doctor_4.jpg",
-      "category":"Dental",
-      "status":FilterStatus.Upcoming,
-    },
-    {
-      "doctorName":"Kalum Weerasiri",
-      "doctorProfile":"Assets/doctor_8.jpg",
-      "category":"Diabetics",
-      "status":FilterStatus.Completed,
-    },
-    {
-      "doctorName":"Wasana Kumari",
-      "doctorProfile":"Assets/doctor_9.jpg",
-      "category":"Eye Care",
-      "status":FilterStatus.Canceled,
-    },
-    {
-      "doctorName":"Nishantha Kumara",
-      "doctorProfile":"Assets/doctor_3.jpg",
-      "category":"Fever",
-      "status":FilterStatus.Canceled,
+  List<dynamic> schedules = [];
+
+  Future<void> getAppointments() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token') ?? '';
+
+    final appointment = await DioProvider().getAppointments(token);
+    if (appointment != 'Error') {
+      setState(() {
+        schedules = json.decode(appointment);
+        print(schedules);
+      });
     }
-  ];
+  }
+
+  @override
+  void initState() {
+    getAppointments();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

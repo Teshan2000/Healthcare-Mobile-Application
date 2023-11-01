@@ -205,7 +205,7 @@ class ScheduleState extends State<Schedule> {
 
                       if (booking == 200) {
                         MyApp.navigatorKey.currentState!.pushNamed("payment");
-                      } 
+                      }                  
                     },
                     disable: _timeSelected && _dateSelected ? false : true,
                   ),
