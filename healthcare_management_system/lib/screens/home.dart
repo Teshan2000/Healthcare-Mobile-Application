@@ -20,6 +20,14 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
+
+  int _currentPage = 0;
+  List<String> bannerImages = [
+    'Assets/banner/1.jpg',
+    'Assets/banner/2.jpg',
+    'Assets/banner/3.jpg',
+  ];
+
   Map<String, dynamic> user = {};
   Map<String, dynamic> doctor = {};
   
@@ -168,32 +176,41 @@ class HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                Container(
+                  height: 150,
+                  child: PageView.builder(
+                    itemCount: bannerImages.length,
+                    onPageChanged: (index) {
+                      setState(() {
+                        _currentPage = index;
+                      });
+                    },
+                    itemBuilder: (context, index) {
+                      return Image.asset(
+                        bannerImages[index],
+                        fit: BoxFit.cover,
+                      );
+                    },
+                  ),
+                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: AssetImage("Assets/profile1.jpg"),
-                      ),
-                    ),
-                    Text( 
-                      "Amanda",
-                      //user['name'],
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Text(
-                      "22 Years Old",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    bannerImages.length,
+                    (index) {
+                      return Container(
+                        margin: EdgeInsets.symmetric(horizontal: 5),
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentPage == index
+                              ? Colors.blue
+                              : Colors.grey.withOpacity(0.5),
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 Config.spaceMedium,
                 Row(
