@@ -73,6 +73,7 @@ flutter:
   assets:
     - Assets/
     - Assets/banner/
+    - Assets/symptoms/
     - Assets/google.png
         # - images/a_dot_ham.jpeg
     

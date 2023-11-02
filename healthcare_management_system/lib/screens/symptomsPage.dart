@@ -33,7 +33,7 @@ class _SymptomsPageState extends State<SymptomsPage> {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),        
         child: GestureDetector(
           child: GridView.count(
-            crossAxisCount: 2, // Number of columns
+            crossAxisCount: 2, 
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
             children: <Widget>[
@@ -48,11 +48,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.thermometer,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/fever.png',
+                              fit: BoxFit.cover,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -80,11 +79,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.tooth,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/dental.png',
+                              fit: BoxFit.fill,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -112,11 +110,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.heartPulse,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/cardiology.png',
+                              fit: BoxFit.fitHeight,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -144,11 +141,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.handDots,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/dermatology.png',
+                              fit: BoxFit.fitWidth,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -176,11 +172,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.disease,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/cholesterol.png',
+                              fit: BoxFit.contain,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -208,15 +203,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.fireFlameSimple,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/diabetes.png',
+                              fit: BoxFit.none,
                             ),
                             Config.spaceSmall,
                             Text(
-                              "Diabetics",
+                              "Diabetes",
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -240,11 +234,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.lungs,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/respirations.png',
+                              fit: BoxFit.scaleDown,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -272,11 +265,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.solidEye,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/eyecare.png',
+                              fit: BoxFit.cover,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -304,11 +296,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.headSideVirus,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/stress.png',
+                              fit: BoxFit.cover,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -336,11 +327,10 @@ class _SymptomsPageState extends State<SymptomsPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              FontAwesomeIcons.virus,
-                              color: Config.primaryColor,
-                              size: 36,
+                          children: <Widget>[
+                            Image.asset(
+                              'Assets/symptoms/virus.png',
+                              fit: BoxFit.cover,
                             ),
                             Config.spaceSmall,
                             Text(

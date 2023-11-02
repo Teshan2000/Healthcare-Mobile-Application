@@ -33,43 +33,43 @@ class HomeState extends State<Home> {
   
   List<Map<String, dynamic>> medCat = [
     {
-      "icon": FontAwesomeIcons.thermometer,
+      "imageAsset": 'Assets/symptoms/fever.png',
       "category": "  Fever  ",
     },
     {
-      "icon": FontAwesomeIcons.tooth,
+      "imageAsset": 'Assets/symptoms/dental.png',
       "category": "  Dental  ",
     },
     {
-      "icon": FontAwesomeIcons.solidEye,
+      "imageAsset": 'Assets/symptoms/eyecare.png',
       "category": "Eye Care",
     },
     {
-      "icon": FontAwesomeIcons.headSideVirus,
+      "imageAsset": 'Assets/symptoms/stress.png',
       "category": "  Stress  ",
     },
     {
-      "icon": FontAwesomeIcons.heartPulse,
+      "imageAsset": 'Assets/symptoms/cardiology.png',
       "category": "Cardiology",
     },
     {
-      "icon": FontAwesomeIcons.handDots,
+      "imageAsset": 'Assets/symptoms/dermatology.png',
       "category": "Dermatology",
     },
     {
-      "icon": FontAwesomeIcons.lungs,
+      "imageAsset": 'Assets/symptoms/respirations.png',
       "category": "Respirations",
     },
     {
-      "icon": FontAwesomeIcons.disease,
+      "imageAsset": 'Assets/symptoms/cholesterol.png',
       "category": "Cholesterol",
     },
     {
-      "icon": FontAwesomeIcons.fireFlameSimple,
-      "category": "Diabetics",
+      "imageAsset": 'Assets/symptoms/diabetes.png',
+      "category": "Diabetes",
     },
     {
-      "icon": FontAwesomeIcons.virus,
+      "imageAsset": 'Assets/symptoms/virus.png',
       "category": "Virus",
     },
   ];
@@ -106,9 +106,6 @@ class HomeState extends State<Home> {
             color: Colors.white,
             onPressed: () async {},
             icon: const Icon(
-              //icon: FaIcon(
-              //isFav ? Icons.favourite_rounded : Icons.favourite_outline,
-              //isFav ? Icons.favorite : Icons.favorite_border_outlined,
               Icons.favorite_border_outlined,
               color: Colors.blue,
             ),
@@ -251,35 +248,47 @@ class HomeState extends State<Home> {
                     scrollDirection: Axis.horizontal,
                     children:
                     List<Widget>.generate(medCat.length, (index) {
-                      return Card(
-                        elevation: 5,
-                        color: Colors.white,
-                        child: Column(
-                          children: [
-                            Flexible(
-                              child: Padding(
-                                padding:
-                                const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                      medCat[index]['icon'],
-                                      color: Config.primaryColor,
-                                    ),
-                                    Config.spaceSmall,
-                                    Text(
-                                      medCat[index]['category'],
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.black,
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SymptomsPage(),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          elevation: 5,
+                          color: Colors.white,
+                          child: Column(
+                            children: [
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 30, vertical: 20),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Image.asset(
+                                        medCat[index]['imageAsset'],
+                                        width: 80,
+                                        height: 80,
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(height: 8),
+                                      Text(
+                                        medCat[index]['category'],
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     }),
