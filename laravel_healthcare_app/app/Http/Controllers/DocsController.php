@@ -32,7 +32,23 @@ class DocsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reviews = new Reviews();
+        $appointment = Appointments::where('id', $request->get('appointment_id'))->first();
+
+        $reviews->user_id = Auth::user()->id;
+        $reviews->doctor_id = $request->get('doctor_id');
+        $reviews->ratings = $request->get('ratings');
+        $reviews->reviews = $request->get('reviews');
+        $reviews->reviewed_by = Auth::user()->name;
+        $reviews->status = 'active';
+        $reviews->save();
+
+        $appointment->status = "complete";
+        $appointment->save();
+
+        return response()->json([
+            'success'=>'The appointment has been completed and reviewed successfully!',
+        ], 200);
     }
 
     /**
