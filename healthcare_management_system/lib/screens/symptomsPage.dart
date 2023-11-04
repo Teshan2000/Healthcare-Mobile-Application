@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthcare_management_system/screens/symptoms.dart';
 import '../components/customAppbar.dart';
 import '../main.dart';
@@ -45,13 +45,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/fever.png',
-                              fit: BoxFit.cover,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -76,13 +77,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/dental.png',
-                              fit: BoxFit.fill,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -107,13 +109,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/cardiology.png',
-                              fit: BoxFit.fitHeight,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -138,13 +141,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/dermatology.png',
-                              fit: BoxFit.fitWidth,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -169,13 +173,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/cholesterol.png',
-                              fit: BoxFit.contain,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -200,13 +205,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/diabetes.png',
-                              fit: BoxFit.none,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -231,13 +237,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/respirations.png',
-                              fit: BoxFit.scaleDown,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -262,13 +269,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/eyecare.png',
-                              fit: BoxFit.cover,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -293,13 +301,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/stress.png',
-                              fit: BoxFit.cover,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -324,13 +333,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
                     Flexible(
                       child: Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
                               'Assets/symptoms/virus.png',
-                              fit: BoxFit.cover,
+                              width: 80,
+                              height: 80,
                             ),
                             Config.spaceSmall,
                             Text(
@@ -350,8 +360,14 @@ class _SymptomsPageState extends State<SymptomsPage> {
             ],
           ),
           onTap: () {
-            MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
-                builder: (_) => Symptoms()));
+            // MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
+            //     builder: (_) => Symptoms()));
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Symptoms(),
+              ),
+            );
           },
         ),
       ),

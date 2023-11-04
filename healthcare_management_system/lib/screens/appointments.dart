@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';
-import 'package:rating_dialog/rating_dialog.dart';
+//import 'package:rating_dialog/rating_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../components/customAppbar.dart';
 import '../utils/config.dart';
@@ -12,10 +12,11 @@ class Appointments extends StatefulWidget {
   @override
   State<Appointments> createState() => AppointmentsState();
 }
+
 enum FilterStatus { Upcoming, Completed, Canceled }
 
 class AppointmentsState extends State<Appointments> {
-  FilterStatus status = FilterStatus.Upcoming; 
+  FilterStatus status = FilterStatus.Upcoming;
   Alignment _alignment = Alignment.centerLeft;
   List<dynamic> schedules = [];
 
@@ -40,9 +41,8 @@ class AppointmentsState extends State<Appointments> {
 
   @override
   Widget build(BuildContext context) {
-
     List<dynamic> filteredSchedules = schedules.where((var schedule) {
-      /*switch (schedule['status']) {
+      switch (schedule['status']) {
         case 'upcoming':
           schedule['status'] = FilterStatus.Upcoming;
           break;
@@ -52,7 +52,7 @@ class AppointmentsState extends State<Appointments> {
         case 'canceled':
           schedule['status'] = FilterStatus.Canceled;
           break;
-      }*/
+      }
       return schedule['status'] == status;
     }).toList();
 
@@ -64,9 +64,6 @@ class AppointmentsState extends State<Appointments> {
           IconButton(
             onPressed: () async {},
             icon: const Icon(
-              //icon: FaIcon(
-              //isFav ? Icons.favourite_rounded : Icons.favourite_outline,
-              //isFav ? Icons.favorite : Icons.favorite_border_outlined,
               Icons.favorite_border_outlined,
               color: Colors.blue,
             ),
@@ -99,10 +96,12 @@ class AppointmentsState extends State<Appointments> {
                                 if (filterStatus == FilterStatus.Upcoming) {
                                   status = FilterStatus.Upcoming;
                                   _alignment = Alignment.centerLeft;
-                                } else if (filterStatus == FilterStatus.Completed) {
+                                } else if (filterStatus ==
+                                    FilterStatus.Completed) {
                                   status = FilterStatus.Completed;
                                   _alignment = Alignment.center;
-                                } else if (filterStatus == FilterStatus.Canceled) {
+                                } else if (filterStatus ==
+                                    FilterStatus.Canceled) {
                                   status = FilterStatus.Canceled;
                                   _alignment = Alignment.centerRight;
                                 }
@@ -140,7 +139,6 @@ class AppointmentsState extends State<Appointments> {
               ],
             ),
             Config.spaceSmall,
-            //AppointmentCard(),
             Config.spaceSmall,
             Expanded(
               child: ListView.builder(
@@ -151,16 +149,17 @@ class AppointmentsState extends State<Appointments> {
                   return Card(
                     elevation: 5,
                     color: Colors.white,
-                    /*shape: RoundedRectangleBorder(
+                    shape: RoundedRectangleBorder(                      
                       side: const BorderSide(
                         color: Colors.grey,
                       ),
                       borderRadius: BorderRadius.circular(20),
-                    ),*/
+                    ), 
                     margin: !isLastElement
                         ? const EdgeInsets.only(bottom: 20)
                         : EdgeInsets.zero,
-                    child: Padding(  //this is it
+                    child: Padding(
+                      //this is it
                       padding: const EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -169,8 +168,9 @@ class AppointmentsState extends State<Appointments> {
                             children: [
                               CircleAvatar(
                                 backgroundImage: AssetImage(
-                                    schedule["doctorProfile"]
-                                ),
+                                    //schedule["doctorProfile"]
+                                    "http://172.27.192.1:8000${schedule['doctor_profile']}",
+                                    ),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -179,7 +179,8 @@ class AppointmentsState extends State<Appointments> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    schedule['doctorName'],
+                                    //schedule['doctorName'],
+                                    "Dr. ${schedule['doctor_name']}",
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
@@ -189,7 +190,8 @@ class AppointmentsState extends State<Appointments> {
                                     height: 5,
                                   ),
                                   Text(
-                                    schedule['category'],
+                                    //schedule['category'],
+                                    "${schedule['category']}",
                                     style: const TextStyle(
                                       color: Colors.grey,
                                       fontSize: 12,
@@ -202,13 +204,12 @@ class AppointmentsState extends State<Appointments> {
                           ),
                           const SizedBox(
                             height: 15,
-                          ),
-                          ScheduleCard(),
-                          /*ScheduleCard(
+                          ),                          
+                          ScheduleCard(
                             date: schedule['date'],
                             day: schedule['day'],
                             time: schedule['time'],
-                          ),*/
+                          ),
                           const SizedBox(
                             height: 15,
                           ),
@@ -225,56 +226,33 @@ class AppointmentsState extends State<Appointments> {
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return RatingDialog(
-                                              initialRating: 1.0,
-                                              title: const Text(
-                                                'Rate the Doctor',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              message: const Text(
-                                                'Please help us to rate our Doctor',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                              image: const FlutterLogo(
-                                                size: 100,
-                                              ),
-                                              submitButtonText: 'Submit',
-                                              commentHint: 'Your Reviews',
-                                              onSubmitted: (response) async {
-                                                // final SharedPreferences prefs =
-                                                // await SharedPreferences.getInstance();
-                                                // final token =
-                                                //     prefs.getString('token') ?? '';
-                                                //
-                                                // final rating = await DioProvider()
-                                                //     .storeReviews(
-                                                //     response.comment,
-                                                //     response.rating,
-                                                //     widget.doctor['appointments']
-                                                //     ['id'], //this is appointment id
-                                                //     widget.doctor[
-                                                //     'doc_id'], //this is doctor id
-                                                //     token);
-
-                                                //if successful, then refresh
-                                                // if (rating == 200 && rating != '') {
-                                                //   MyApp.navigatorKey.currentState!
-                                                //       .pushNamed('main');
-                                                // }
-                                              }
-                                          );
-                                        }
-                                    );
+                                    // showDialog(
+                                    //     context: context,
+                                    //     builder: (context) {
+                                    //       return RatingDialog(
+                                    //           initialRating: 1.0,
+                                    //           title: const Text(
+                                    //             'Rate the Doctor',
+                                    //             textAlign: TextAlign.center,
+                                    //             style: TextStyle(
+                                    //               fontSize: 25,
+                                    //               fontWeight: FontWeight.bold,
+                                    //             ),
+                                    //           ),
+                                    //           message: const Text(
+                                    //             'Please help us to rate our Doctor',
+                                    //             textAlign: TextAlign.center,
+                                    //             style: TextStyle(
+                                    //               fontSize: 15,
+                                    //             ),
+                                    //           ),
+                                    //           image: const FlutterLogo(
+                                    //             size: 100,
+                                    //           ),
+                                    //           submitButtonText: 'Submit',
+                                    //           commentHint: 'Your Reviews',
+                                    //           onSubmitted: (response) async {});
+                                    //     });
                                   },
                                 ),
                               ),
@@ -309,10 +287,17 @@ class AppointmentsState extends State<Appointments> {
   }
 }
 
-
 class ScheduleCard extends StatelessWidget {
-  // const ScheduleCard({Key? key, required this.appointment}) : super(key: key);
-  // final Map<String, dynamic> appointment;
+  const ScheduleCard({
+    Key? key,
+    required this.date, required this.day, required this.time
+    //required this.appointment
+  }) : super(key: key);
+  //final Map<String, dynamic> appointment;
+
+  final String date;
+  final String day;
+  final String time;
 
   @override
   Widget build(BuildContext context) {
@@ -325,98 +310,40 @@ class ScheduleCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween, //added new 
         children: <Widget>[
-          Icon(
+          const Icon(
             Icons.calendar_today,
             color: Colors.white,
             size: 15,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           Text(
-            "Monday, 2023/09/10",
-            style: TextStyle(color: Colors.white),
+            //"Monday, 2023/09/10",
+            '$day, $date',
+            style: const TextStyle(color: Colors.white),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
-          Icon(
+          const Icon(
             Icons.access_alarm,
             color: Colors.white,
             size: 17,
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           Flexible(
               child: Text(
-                '2.00 PM',
-                style: TextStyle(color: Colors.white),
-              ))
+            //'2.00 PM',
+            '$time',
+            style: const TextStyle(color: Colors.white),
+          ))
         ],
       ),
     );
   }
 }
-
-
-/*class ScheduleCard extends StatelessWidget {
-  const ScheduleCard(
-      {Key? key, required this.date, required this.day, required this.time})
-      : super(key: key);
-  final String date;
-  final String day;
-  final String time;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          const Icon(
-            Icons.calendar_today,
-            color: Config.primaryColor,
-            size: 15,
-          ),
-          const SizedBox(
-            width: 5,
-          ),
-          Text(
-            '$day, $date',
-            style: const TextStyle(
-              color: Config.primaryColor,
-            ),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          const Icon(
-            Icons.access_alarm,
-            color: Config.primaryColor,
-            size: 17,
-          ),
-          const SizedBox(
-            width: 5,
-          ),
-          Flexible(
-              child: Text(
-                time,
-                style: const TextStyle(
-                  color: Config.primaryColor,
-                ),
-              ))
-        ],
-      ),
-    );
-  }
-}*/
-
