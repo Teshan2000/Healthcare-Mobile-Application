@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';
-//import 'package:rating_dialog/rating_dialog.dart';
+import 'package:rating_dialog/rating_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../components/customAppbar.dart';
 import '../utils/config.dart';
@@ -169,7 +169,7 @@ class AppointmentsState extends State<Appointments> {
                               CircleAvatar(
                                 backgroundImage: AssetImage(
                                     //schedule["doctorProfile"]
-                                    "http://172.27.192.1:8000${schedule['doctor_profile']}",
+                                    "http://192.168.1.102:8000${schedule['doctor_profile']}",
                                     ),
                               ),
                               const SizedBox(
@@ -226,33 +226,33 @@ class AppointmentsState extends State<Appointments> {
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: () {
-                                    // showDialog(
-                                    //     context: context,
-                                    //     builder: (context) {
-                                    //       return RatingDialog(
-                                    //           initialRating: 1.0,
-                                    //           title: const Text(
-                                    //             'Rate the Doctor',
-                                    //             textAlign: TextAlign.center,
-                                    //             style: TextStyle(
-                                    //               fontSize: 25,
-                                    //               fontWeight: FontWeight.bold,
-                                    //             ),
-                                    //           ),
-                                    //           message: const Text(
-                                    //             'Please help us to rate our Doctor',
-                                    //             textAlign: TextAlign.center,
-                                    //             style: TextStyle(
-                                    //               fontSize: 15,
-                                    //             ),
-                                    //           ),
-                                    //           image: const FlutterLogo(
-                                    //             size: 100,
-                                    //           ),
-                                    //           submitButtonText: 'Submit',
-                                    //           commentHint: 'Your Reviews',
-                                    //           onSubmitted: (response) async {});
-                                    //     });
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return RatingDialog(
+                                              initialRating: 1.0,
+                                              title: const Text(
+                                                'Rate the Doctor',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              message: const Text(
+                                                'Please help us to rate our Doctor',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                              image: const FlutterLogo(
+                                                size: 100,
+                                              ),
+                                              submitButtonText: 'Submit',
+                                              commentHint: 'Your Reviews',
+                                              onSubmitted: (response) async {});
+                                        });
                                   },
                                 ),
                               ),

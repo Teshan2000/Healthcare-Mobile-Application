@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('doctor_id');
             $table->unsignedInteger('ratings')->nullable();
-            $table->long('reviews')->nullable();
+            $table->longText('reviews')->nullable();
             $table->string('reviewed_by');
             $table->string('status');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

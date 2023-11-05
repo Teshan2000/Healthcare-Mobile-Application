@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reviews;
 use App\Models\Appointments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,9 @@ class DocsController extends Controller
     {
         $doctor = Auth::user();
         $appointments = Appointments::where('doctor_id', $doctor->id)->where('status', 'upcoming')->get();
+        $reviews = Reviews::Where('doctor_id', $doctor->id)->where('status', 'active')->get();
 
-        return view('dashboard')->with(['doctor'=>$doctor, 'appointments'=>$appointments]);
+        return view('dashboard')->with(['doctor'=>$doctor, 'appointments'=>$appointments, 'reviews'=>$reviews]);
     }
 
     /**
