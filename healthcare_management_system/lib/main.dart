@@ -3,6 +3,7 @@ import 'package:healthcare_management_system/models/authModel.dart';
 import 'package:healthcare_management_system/screens/auth.dart';
 import 'package:healthcare_management_system/screens/doctorDetails.dart';
 import 'package:healthcare_management_system/screens/home.dart';
+import 'package:healthcare_management_system/screens/loginPage.dart';
 import 'package:healthcare_management_system/screens/payment.dart';
 import 'package:healthcare_management_system/screens/schedule.dart';
 import 'package:healthcare_management_system/screens/settings.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
     
         initialRoute: '/',
         routes: {
-          '/':(context) => const AuthPage(),
+          '/':(context) => LoginPage(),
           'login':(context) => const Home(),
           'login':(context) => const Layout(),
           'symptoms': (context) => Symptoms(),
