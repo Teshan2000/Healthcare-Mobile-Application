@@ -57,9 +57,9 @@ class AppDrawer extends StatelessWidget {
             onTap: onSymptomsPressed,
           ),
           ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Notifications'),
-            onTap: onSymptomsPressed,
+            leading: Icon(Icons.message),
+            title: Text('Messages'),
+            onTap: onNotificationsPressed,
           ),
           ListTile(
             leading: Icon(Icons.settings),

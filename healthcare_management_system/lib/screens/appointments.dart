@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:healthcare_management_system/main.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,7 +8,9 @@ import '../components/customAppbar.dart';
 import '../utils/config.dart';
 
 class Appointments extends StatefulWidget {
-  const Appointments({Key? key}) : super(key: key);
+  const Appointments({Key? key, required this.doctor}) : super(key: key);
+
+  final Map<String, dynamic> doctor;
 
   @override
   State<Appointments> createState() => AppointmentsState();
@@ -149,12 +152,12 @@ class AppointmentsState extends State<Appointments> {
                   return Card(
                     elevation: 5,
                     color: Colors.white,
-                    shape: RoundedRectangleBorder(                      
+                    shape: RoundedRectangleBorder(
                       side: const BorderSide(
                         color: Colors.grey,
                       ),
                       borderRadius: BorderRadius.circular(20),
-                    ), 
+                    ),
                     margin: !isLastElement
                         ? const EdgeInsets.only(bottom: 20)
                         : EdgeInsets.zero,
@@ -167,10 +170,10 @@ class AppointmentsState extends State<Appointments> {
                           Row(
                             children: [
                               CircleAvatar(
-                                backgroundImage: AssetImage(
-                                    //schedule["doctorProfile"]
-                                    "http://192.168.1.102:8000${schedule['doctor_profile']}",
-                                    ),
+                                backgroundImage: NetworkImage(
+                                  //schedule["doctorProfile"]
+                                  "http://192.168.43.214:8000${schedule['doctor_profile']}",
+                                ),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -204,7 +207,7 @@ class AppointmentsState extends State<Appointments> {
                           ),
                           const SizedBox(
                             height: 15,
-                          ),                          
+                          ),
                           ScheduleCard(
                             date: schedule['date'],
                             day: schedule['day'],
@@ -251,8 +254,34 @@ class AppointmentsState extends State<Appointments> {
                                               ),
                                               submitButtonText: 'Submit',
                                               commentHint: 'Your Reviews',
-                                              onSubmitted: (response) async {});
-                                        });
+                                              onSubmitted: (response) async {
+                                                final SharedPreferences prefs =
+                                                    await SharedPreferences
+                                                        .getInstance();
+                                                final token =
+                                                    prefs.getString('token') ??
+                                                        '';
+
+                                                final rating = await DioProvider()
+                                                    .storeReviews(
+                                                        response.comment,
+                                                        response.rating,
+                                                        widget.doctor[
+                                                                'appointments']
+                                                            ['id'],
+                                                        widget.doctor[
+                                                            'doctor_id'],
+                                                        token);
+
+                                                if (rating == 200 &&
+                                                    rating != '') {
+                                                  MyApp.navigatorKey
+                                                      .currentState!
+                                                      .pushNamed('login');
+                                                }
+                                              });
+                                        }
+                                    );
                                   },
                                 ),
                               ),
@@ -288,11 +317,11 @@ class AppointmentsState extends State<Appointments> {
 }
 
 class ScheduleCard extends StatelessWidget {
-  const ScheduleCard({
-    Key? key,
-    required this.date, required this.day, required this.time
-    //required this.appointment
-  }) : super(key: key);
+  const ScheduleCard(
+      {Key? key, required this.date, required this.day, required this.time
+      //required this.appointment
+      })
+      : super(key: key);
   //final Map<String, dynamic> appointment;
 
   final String date;
@@ -310,7 +339,7 @@ class ScheduleCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween, //added new 
+        mainAxisAlignment: MainAxisAlignment.spaceBetween, 
         children: <Widget>[
           const Icon(
             Icons.calendar_today,

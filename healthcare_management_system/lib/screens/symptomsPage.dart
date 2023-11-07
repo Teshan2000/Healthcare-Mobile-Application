@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthcare_management_system/screens/symptoms.dart';
 import '../components/customAppbar.dart';
-import '../main.dart';
 import '../utils/config.dart';
 
 class SymptomsPage extends StatefulWidget {

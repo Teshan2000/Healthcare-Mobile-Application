@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/components/appDrawer.dart';
+import 'package:healthcare_management_system/components/chatBody.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
+import 'package:healthcare_management_system/screens/messages.dart';
 import 'package:healthcare_management_system/screens/settings.dart';
 import 'package:healthcare_management_system/screens/symptomsPage.dart';
 import 'package:healthcare_management_system/screens/userDetails.dart';
@@ -10,7 +12,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../components/customAppbar.dart';
 import '../components/doctorCard.dart';
 import '../utils/config.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -128,7 +129,7 @@ class HomeState extends State<Home> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Appointments(),
+              builder: (context) => Appointments(doctor: {},),
             ),
           );
         },
@@ -144,7 +145,7 @@ class HomeState extends State<Home> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Appointments(),
+              builder: (context) => Messages(),
             ),
           );
         },

@@ -45,7 +45,7 @@ class DoctorDetailsState extends State<DoctorDetails> {
               //icon: FaIcon(
               //isFav ? Icons.favourite_rounded : Icons.favourite_outline,
               isFav ? Icons.favorite : Icons.favorite_border_outlined,
-              color: Colors.red,
+              color: Colors.blue,
             ),
           )     
         ],
@@ -95,7 +95,7 @@ class DetailHead extends StatelessWidget {
             CircleAvatar(
               radius: 65.0,
              //backgroundImage: AssetImage("Assets/doctor_9.jpg"),
-              backgroundImage: NetworkImage("http://192.168.1.102:8000${doctor['doctor_profile']}",),
+              backgroundImage: NetworkImage("http://192.168.43.214:8000${doctor['doctor_profile']}",),
               backgroundColor: Colors.white,
             ),
             Config.spaceMedium,

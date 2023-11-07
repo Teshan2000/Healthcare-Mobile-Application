@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/components/customAppBar.dart';
-import '../components/doctorCard.dart';
+import 'package:healthcare_management_system/components/doctorCard.dart';
+//import '../components/doctorCard.dart';
 import '../utils/config.dart';
 
 class Symptoms extends StatelessWidget {
   Symptoms({
-    Key? key, 
+    Key? key,
     //required Map doctor,
     //required this.doctor,
     //required this.isFav,
@@ -21,17 +22,13 @@ class Symptoms extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Fever",
-        //icon: const FaIcon(Icons.arrow_back_ios),
         icon: const Icon(Icons.arrow_back_ios),
         actions: [
           IconButton(
             onPressed: () async {},
             icon: const Icon(
-              //icon: FaIcon(
-              //isFav ? Icons.favourite_rounded : Icons.favourite_outline,
-              //isFav ? Icons.favorite : Icons.favorite_border_outlined,
               Icons.favorite_border_outlined,
-              color: Colors.red,
+              color: Colors.blue,
             ),
           )
         ],
@@ -129,12 +126,15 @@ class Symptoms extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  children: List.generate(user['doctor'].length, (index) {
-                    return DoctorCard(
-                      route: 'doctor', 
-                      doctor: user['doctor'][index],
-                    ); 
+                  children: List.generate(5, (index) {
+                    return DoctorCard(route: '', doctor: {},);
                   }),
+                  // children: List.generate(user['doctor'].length, (index) {
+                  //   return DoctorCard(
+                  //     route: 'doctor',
+                  //     doctor: user['doctor'][index],
+                  //   );
+                  // }),
                 )
               ]),
         ),

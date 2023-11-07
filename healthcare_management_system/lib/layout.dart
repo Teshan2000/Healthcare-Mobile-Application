@@ -28,7 +28,7 @@ class LayoutState extends State<Layout> {
         }),
         children: <Widget>[
           Home(),
-          Appointments(),          
+          Appointments(doctor: {},),          
           Messages(),
           Settings(),
         ],
