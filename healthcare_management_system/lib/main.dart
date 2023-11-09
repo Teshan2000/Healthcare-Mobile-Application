@@ -5,8 +5,10 @@ import 'package:healthcare_management_system/screens/doctorDetails.dart';
 import 'package:healthcare_management_system/screens/home.dart';
 import 'package:healthcare_management_system/screens/loginPage.dart';
 import 'package:healthcare_management_system/screens/payment.dart';
+import 'package:healthcare_management_system/screens/registerPage.dart';
 import 'package:healthcare_management_system/screens/schedule.dart';
 import 'package:healthcare_management_system/screens/settings.dart';
+import 'package:healthcare_management_system/screens/startScreen.dart';
 import 'package:healthcare_management_system/screens/success.dart';
 import 'package:healthcare_management_system/screens/symptoms.dart';
 import 'package:healthcare_management_system/utils/config.dart';
@@ -55,9 +57,11 @@ class MyApp extends StatelessWidget {
     
         initialRoute: '/',
         routes: {
-          '/':(context) => LoginPage(),
-          'login':(context) => const Home(),
-          'login':(context) => const Layout(),
+          '/':(context) => SplashScreen(),
+          "login": (context) => LoginPage(),
+          "register": (context) => RegisterPage(),
+          'home':(context) => const Home(),
+          'home':(context) => const Layout(),
           'symptoms': (context) => Symptoms(),
           'doctor': (context) => const DoctorDetails(),
           'schedule': (context) => const Schedule(),

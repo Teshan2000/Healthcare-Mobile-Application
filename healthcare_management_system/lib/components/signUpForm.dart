@@ -16,6 +16,9 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
+  String email = "";
+  String password = "";
+  String fullName = "";
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
@@ -38,6 +41,18 @@ class _SignUpFormState extends State<SignUpForm> {
               prefixIcon: Icon(Icons.person_outlined),
               prefixIconColor: Config.primaryColor,
             ),
+            onChanged: (val) {
+              setState(() {
+                fullName = val;
+              });
+            },
+            validator: (val) {
+              if (val!.isNotEmpty) {
+                return null;
+              } else {
+                return "Name cannot be empty";
+              }
+            },
           ),
           Config.spaceSmall,
           TextFormField(
@@ -51,6 +66,16 @@ class _SignUpFormState extends State<SignUpForm> {
               prefixIcon: Icon(Icons.email_outlined),
               prefixIconColor: Config.primaryColor,
             ),
+            validator: (val) {
+              return RegExp(
+                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val!)
+                  ? null : "Please enter a valid email";
+            },
+            onChanged: (val) {
+              setState(() {
+                email = val;
+              });
+            },
           ),
           Config.spaceSmall,
           TextFormField(
@@ -78,7 +103,21 @@ class _SignUpFormState extends State<SignUpForm> {
                         : const Icon(
                             Icons.visibility_outlined,
                             color: Config.primaryColor,
-                          ))),
+                          )
+                )
+            ),
+            validator: (val) {
+              if (val!.length < 6) {
+                return "Password must be at least 6 characters";
+              } else {
+                return null;
+              }
+            },
+            onChanged: (val) {
+              setState(() {
+                password = val;
+              });
+            },
           ),
           Config.spaceSmall,
           Consumer<AuthModel>(builder: (context, auth, child) {
@@ -97,7 +136,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
                   if (token) {
                     auth.loginSuccess();
-                    MyApp.navigatorKey.currentState!.pushNamed('login');
+                    MyApp.navigatorKey.currentState!.pushNamed('home');
                   }
                 } else {
                   print('Register not successful!');

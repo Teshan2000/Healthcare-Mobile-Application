@@ -266,11 +266,8 @@ class AppointmentsState extends State<Appointments> {
                                                     .storeReviews(
                                                         response.comment,
                                                         response.rating,
-                                                        widget.doctor[
-                                                                'appointments']
-                                                            ['id'],
-                                                        widget.doctor[
-                                                            'doctor_id'],
+                                                        widget.doctor['appointments']['id'],
+                                                        widget.doctor['doctor_id'],
                                                         token);
 
                                                 if (rating == 200 &&
