@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:healthcare_management_system/screens/auth.dart';
+import 'package:healthcare_management_system/screens/loginPage.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class SplashScreenState extends State<SplashScreen> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return const AuthPage(); 
+              return LoginPage(); 
             },
           ),
         );

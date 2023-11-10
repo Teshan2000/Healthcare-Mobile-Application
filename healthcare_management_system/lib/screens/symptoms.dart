@@ -1,34 +1,95 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/components/customAppBar.dart';
 import 'package:healthcare_management_system/components/doctorCard.dart';
-//import '../components/doctorCard.dart';
+import 'package:healthcare_management_system/providers/dioProvider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/config.dart';
 
-class Symptoms extends StatelessWidget {
+class Symptoms extends StatefulWidget {
+  final String symptomName;
+
   Symptoms({
     Key? key,
-    //required Map doctor,
-    //required this.doctor,
-    //required this.isFav,
+    required this.symptomName,
   }) : super(key: key);
 
+  @override
+  State<Symptoms> createState() => SymptomsState();
+}
+
+class SymptomsState extends State<Symptoms> {
+
+  List<dynamic> filteredDoctors = [];
   Map<String, dynamic> doctor = {};
   Map<String, dynamic> user = {};
-  //final bool isFav;
+
+  Future<void> getData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token') ?? '';
+
+    if (token.isNotEmpty && token != '') {
+      final response = await DioProvider().getUser(token);
+      if (response != null) {
+        setState(() {
+          user = json.decode(response);
+          print(user);
+        });
+      }
+    }
+  }
+
+  // void filterDoctors() {
+  //   filteredDoctors = user['doctor']
+  //       .where((doctor) => doctor['category'] == widget.symptomName)
+  //       .toList();
+  // }
+
+  void filterDoctors() {
+    if (user['doctor'] != null) {
+      filteredDoctors = user['doctor']
+          .where((doctor) => doctor['category'] == widget.symptomName)
+          .toList();
+    }
+  }
+
+  // @override
+  // void initState() {
+  //   getData();
+  //   filterDoctors();
+  //   super.initState();
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    getData().then((_) {
+      filterDoctors();
+    });
+  }
+
+
+  @override
+  void didUpdateWidget(covariant Symptoms oldWidget) {
+    if (oldWidget.symptomName != widget.symptomName) {
+      filterDoctors();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {
     Config().init(context);
     return Scaffold(
       appBar: CustomAppBar(
-        appTitle: "Fever",
+        appTitle: widget.symptomName,
         icon: const Icon(Icons.arrow_back_ios),
         actions: [
           IconButton(
             onPressed: () async {},
             icon: const Icon(
-              Icons.favorite_border_outlined,
-              color: Colors.blue,
+              Icons.thermostat,
+              color: Colors.white,
             ),
           )
         ],
@@ -81,43 +142,7 @@ class Symptoms extends StatelessWidget {
                     ),
                   ),
                 ),
-                Config.spaceSmall,
-                // Container(
-                //   padding: const EdgeInsets.all(80),
-                //   margin: const EdgeInsets.only(bottom: 0),
-                //   child: Column(
-                //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                //     children: [
-                //       Text(
-                //         "Measure Your Temperature",
-                //         style: TextStyle(
-                //           fontSize: 18,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //         softWrap: true,
-                //         textAlign: TextAlign.justify,
-                //       ),
-                //       Text(
-                //         "Take Paracetamol pills",
-                //         style: TextStyle(
-                //           fontSize: 18,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //         softWrap: true,
-                //         textAlign: TextAlign.justify,
-                //       ),
-                //       Text(
-                //         "Take some rest",
-                //         style: TextStyle(
-                //           fontSize: 18,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //         softWrap: true,
-                //         textAlign: TextAlign.justify,
-                //       ),
-                //     ]
-                //   ),
-                // ),
+                Config.spaceSmall,                
                 Text(
                   "   Choose Your Doctor",
                   style: TextStyle(
@@ -125,17 +150,49 @@ class Symptoms extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Column(
-                  children: List.generate(5, (index) {
-                    return DoctorCard(route: '', doctor: {},);
-                  }),
-                  // children: List.generate(user['doctor'].length, (index) {
-                  //   return DoctorCard(
-                  //     route: 'doctor',
-                  //     doctor: user['doctor'][index],
-                  //   );
-                  // }),
-                )
+                // Column(
+                //   children: List.generate(5, (index) {
+                //     return DoctorCard(route: '', doctor: {},);
+                //   }),
+                //   children: List.generate(user['doctor'].length, (index) {
+                //     return DoctorCard(
+                //       route: 'doctor',
+                //       doctor: user['doctor'][index],
+                //     );
+                //   }),
+                // )
+
+                // if (user['doctor'] != null)
+                //   Column(
+                //     children: List.generate(user['doctor'].length, (index) {                      
+                //       return DoctorCard(
+                //         route: 'doctor',
+                //         doctor: user['doctor'][index],
+                //       );                                           
+                //     }),
+                //   )
+
+                //if (filteredDoctors.isNotEmpty)
+                if (filteredDoctors != null && filteredDoctors.isNotEmpty)
+
+                  Column(
+                    children: List.generate(filteredDoctors.length, (index) {
+                      return DoctorCard(
+                        route: 'doctor',
+                        doctor: filteredDoctors[index],
+                      );
+                    }),
+                  ),
+                if (filteredDoctors.isEmpty)
+                  Center(
+                    child: Text(
+                      "No doctors available for ${widget.symptomName}",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
               ]),
         ),
       ),

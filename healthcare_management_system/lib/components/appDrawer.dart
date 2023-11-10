@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/auth.dart';
+import 'package:healthcare_management_system/screens/loginPage.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -91,7 +92,7 @@ class AppDrawer extends StatelessWidget {
                           //await authService.signOut();
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => const AuthPage(),
+                              builder: (context) => LoginPage(),
                             ),
                             (route) => false,
                           );

@@ -3,6 +3,7 @@ import 'package:healthcare_management_system/screens/appointments.dart';
 import 'package:healthcare_management_system/screens/home.dart';
 import 'package:healthcare_management_system/screens/messages.dart';
 import 'package:healthcare_management_system/screens/settings.dart';
+import 'package:healthcare_management_system/screens/symptomsPage.dart';
 
 
 class Layout extends StatefulWidget {
@@ -28,9 +29,9 @@ class LayoutState extends State<Layout> {
         }),
         children: <Widget>[
           Home(),
+          SymptomsPage(),
           Appointments(doctor: {},),          
           Messages(),
-          Settings(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -51,16 +52,16 @@ class LayoutState extends State<Layout> {
             label: "Home",
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.sick),
+            label: "Symptoms",
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.medical_services),
             label: "Appointments",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
             label: "Messages",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_rounded),
-            label: "Settings",
           ),
         ],
       ),

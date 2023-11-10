@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
           "register": (context) => RegisterPage(),
           'home':(context) => const Home(),
           'home':(context) => const Layout(),
-          'symptoms': (context) => Symptoms(),
+          'symptoms': (context) => Symptoms(symptomName: '',),
           'doctor': (context) => const DoctorDetails(),
           'schedule': (context) => const Schedule(),
           'payment': (context) => const Payment(),
