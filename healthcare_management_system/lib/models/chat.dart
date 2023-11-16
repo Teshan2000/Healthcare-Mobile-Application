@@ -21,9 +21,16 @@ List chatsData = [
   ),
   Chat(
     name: "Kasun Perera",
-    lastMessage: "Hello Abdullah! I am...",
+    lastMessage: "Hello Doctor! I need...",
     image: "Assets/doctor_2.jpg",
     time: "8m ago",
+    isActive: true,
+  ),
+  Chat(
+    name: "Nayana Kumari",
+    lastMessage: "Can you prescribe me?...",
+    image: "Assets/doctor_9.jpg",
+    time: "1 day ago",
     isActive: true,
   ),
 ];

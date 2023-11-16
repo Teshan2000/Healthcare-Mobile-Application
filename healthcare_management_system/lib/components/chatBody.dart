@@ -11,7 +11,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  List<Message> messages = []; // Store messages here
+  List<Message> messages = []; 
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +28,15 @@ class _BodyState extends State<Body> {
         ),
         ChatInputField(
           onSendMessage: (message, fileType) {
-            // Simulate receiving a message for demonstration purposes
-            // In your real implementation, this would be sent to your Laravel backend
             final receivedMessage = Message(
               text: message,
               fileType: fileType,
-              isSender: true, // Set to true for sent messages
+              isSender: true, 
             );
 
             setState(() {
               messages.add(receivedMessage);
             });
-
-            // Save the message to the Laravel database here
-            // You can send an HTTP request to your Laravel API to save the message
-            // Example: saveMessageToDatabase(message, fileType);
           },
         ),
       ],
@@ -61,8 +55,8 @@ class MessageWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Align(
         alignment: message.isSender
-            ? Alignment.centerRight // Sent messages on the right
-            : Alignment.centerLeft, // Received messages on the left
+            ? Alignment.centerRight 
+            : Alignment.centerLeft, 
         child: Container(
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
@@ -71,11 +65,11 @@ class MessageWidget extends StatelessWidget {
           ),
           child: Column(
             crossAxisAlignment: message.isSender
-                ? CrossAxisAlignment.end // Align sent messages to the right
-                : CrossAxisAlignment.start, // Align received messages to the left
+                ? CrossAxisAlignment.end 
+                : CrossAxisAlignment.start, 
             children: [
               Text(message.text),
-              if (message.fileType != null) // Check if there's a file attached
+              if (message.fileType != null) 
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
@@ -97,11 +91,11 @@ class MessageWidget extends StatelessWidget {
 class Message {
   final String text;
   final FileType? fileType;
-  final bool isSender; // Indicates whether the message is sent or received
+  final bool isSender; 
 
   Message({
     required this.text,
     this.fileType,
-    this.isSender = false, // Default to received message
+    this.isSender = false, 
   });
 }

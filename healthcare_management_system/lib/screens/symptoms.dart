@@ -19,7 +19,6 @@ class Symptoms extends StatefulWidget {
 }
 
 class SymptomsState extends State<Symptoms> {
-
   List<dynamic> filteredDoctors = [];
   Map<String, dynamic> doctor = {};
   Map<String, dynamic> user = {};
@@ -67,7 +66,6 @@ class SymptomsState extends State<Symptoms> {
       filterDoctors();
     });
   }
-
 
   @override
   void didUpdateWidget(covariant Symptoms oldWidget) {
@@ -142,7 +140,7 @@ class SymptomsState extends State<Symptoms> {
                     ),
                   ),
                 ),
-                Config.spaceSmall,                
+                Config.spaceSmall,
                 Text(
                   "   Choose Your Doctor",
                   style: TextStyle(
@@ -162,37 +160,38 @@ class SymptomsState extends State<Symptoms> {
                 //   }),
                 // )
 
-                // if (user['doctor'] != null)
-                //   Column(
-                //     children: List.generate(user['doctor'].length, (index) {                      
-                //       return DoctorCard(
-                //         route: 'doctor',
-                //         doctor: user['doctor'][index],
-                //       );                                           
-                //     }),
-                //   )
-
-                //if (filteredDoctors.isNotEmpty)
-                if (filteredDoctors != null && filteredDoctors.isNotEmpty)
-
+                if (user['doctor'] != null)
                   Column(
-                    children: List.generate(filteredDoctors.length, (index) {
+                    children: List.generate(user['doctor'].length, (index) {
                       return DoctorCard(
                         route: 'doctor',
-                        doctor: filteredDoctors[index],
+                        doctor: user['doctor'][index],
                       );
                     }),
-                  ),
-                if (filteredDoctors.isEmpty)
-                  Center(
-                    child: Text(
-                      "No doctors available for ${widget.symptomName}",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  )
+
+                //if (filteredDoctors.isNotEmpty)
+
+                // if (filteredDoctors != null && filteredDoctors.isNotEmpty)
+
+                //   Column(
+                //     children: List.generate(filteredDoctors.length, (index) {
+                //       return DoctorCard(
+                //         route: 'doctor',
+                //         doctor: filteredDoctors[index],
+                //       );
+                //     }),
+                //   ),
+                // if (filteredDoctors.isEmpty)
+                //   Center(
+                //     child: Text(
+                //       "No doctors available for ${widget.symptomName}",
+                //       style: TextStyle(
+                //         fontSize: 16,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //   ),
               ]),
         ),
       ),

@@ -6,7 +6,7 @@ class ChatInputField extends StatefulWidget {
   final Function(String, FileType?) onSendMessage;
 
   const ChatInputField({
-    Key? key, 
+    Key? key,
     required this.onSendMessage,
   }) : super(key: key);
 
@@ -40,7 +40,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
         vertical: Config.defaultPadding / 2,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Config.primaryColor,
         boxShadow: [
           BoxShadow(
             offset: const Offset(0, 4),
@@ -54,21 +54,20 @@ class _ChatInputFieldState extends State<ChatInputField> {
           children: [
             IconButton(
               icon: const Icon(Icons.attach_file),
+              color: Colors.white,
               onPressed: _openFilePicker,
             ),
             const SizedBox(width: Config.defaultPadding),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: Config.defaultPadding * 0.75,
+                padding: const EdgeInsets.only(      
                 ),
                 decoration: BoxDecoration(
-                  color: Config.primaryColor.withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(40),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   children: [
-                    const SizedBox(width: Config.defaultPadding / 4),
                     Expanded(
                       child: TextField(
                         controller: _messageController,
@@ -85,14 +84,14 @@ class _ChatInputFieldState extends State<ChatInputField> {
             IconButton(
               icon: const Icon(
                 Icons.send,
-                color: Config.primaryColor,
+                color: Colors.white,
               ),
               onPressed: () {
                 String message = _messageController.text.trim();
                 widget.onSendMessage(message, _fileType);
                 _messageController.clear();
                 setState(() {
-                 _fileType = null;
+                  _fileType = null;
                 });
               },
             ),

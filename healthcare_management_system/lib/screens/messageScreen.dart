@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthcare_management_system/screens/messages.dart';
+import 'package:healthcare_management_system/components/chatBody.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 
 class MessagesScreen extends StatelessWidget {
@@ -16,9 +16,12 @@ class MessagesScreen extends StatelessWidget {
   AppBar buildAppBar() {
     return AppBar(
       automaticallyImplyLeading: false,
-      title: Row(
+      backgroundColor: Colors.blue, 
+      iconTheme: IconThemeData(color: Colors.white),
+      title: const Row(
         children: [
-          BackButton(),
+          const Icon(Icons.arrow_back_ios),
+          SizedBox(width: 10,),
           CircleAvatar(
             backgroundImage: AssetImage("Assets/doctor_4.jpg"),
           ),
@@ -28,11 +31,11 @@ class MessagesScreen extends StatelessWidget {
             children: [
               Text(
                 "Hana Gamage",
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
               Text(
                 "Active 3m ago",
-                style: TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: 12, color: Colors.white),
               )
             ],
           )

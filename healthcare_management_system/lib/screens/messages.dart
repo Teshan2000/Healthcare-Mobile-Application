@@ -13,7 +13,7 @@ class Messages extends StatefulWidget {
 }
 
 class _MessagesState extends State<Messages> {
-  int _selectedIndex = 1;
+  //int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
