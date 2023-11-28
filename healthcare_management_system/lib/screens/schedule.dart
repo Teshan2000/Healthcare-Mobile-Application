@@ -37,7 +37,6 @@ class ScheduleState extends State<Schedule> {
     super.initState();
   }
 
-    //table calendar
     Widget _tableCalendar() {
       return TableCalendar(
         focusedDay: _focusDay,
@@ -64,7 +63,6 @@ class ScheduleState extends State<Schedule> {
             _focusDay = focusedDay;
             _dateSelected = true;
 
-            //check if weekend is selected
             if (selectedDay.weekday == 6 || selectedDay.weekday == 7) {
               _isWeekend = true;
               _timeSelected = false;

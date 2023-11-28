@@ -1,5 +1,3 @@
-//this is pre-define text for app
-
 class AppText {
   static final enText = {
     'welcome_text': 'Welcome',

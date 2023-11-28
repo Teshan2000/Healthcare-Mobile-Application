@@ -6,12 +6,10 @@ class DoctorCard extends StatelessWidget {
     Key? key,
     required this.route,
     required this.doctor,
-    //required this.isFav,
   }) : super(key: key);
 
   final String route;
   final Map<String, dynamic> doctor;
-  //final bool isFav;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,6 @@ class DoctorCard extends StatelessWidget {
                 width: Config.widthSize * 0.28,
                 height: Config.heightSize * 0.28,  
                 child: Image.network(
-                  //"Assets/doctor_3.jpg",
                   "http://192.168.43.214:8000${doctor['doctor_profile']}",
                   fit: BoxFit.cover,
                 ),
@@ -42,7 +39,6 @@ class DoctorCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        //"Dr. Nishantha Kumara",
                         "Dr. ${doctor['doctor_name']}",
                         style: const TextStyle(
                           fontSize: 18,
@@ -51,7 +47,6 @@ class DoctorCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        //"Fever",
                         "${doctor['category']}",
                         style: const TextStyle(
                           fontSize: 14,

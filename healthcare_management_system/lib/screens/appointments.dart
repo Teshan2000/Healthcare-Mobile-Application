@@ -162,7 +162,6 @@ class AppointmentsState extends State<Appointments> {
                         ? const EdgeInsets.only(bottom: 20)
                         : EdgeInsets.zero,
                     child: Padding(
-                      //this is it
                       padding: const EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -316,10 +315,8 @@ class AppointmentsState extends State<Appointments> {
 class ScheduleCard extends StatelessWidget {
   const ScheduleCard(
       {Key? key, required this.date, required this.day, required this.time
-      //required this.appointment
       })
       : super(key: key);
-  //final Map<String, dynamic> appointment;
 
   final String date;
   final String day;
@@ -347,7 +344,6 @@ class ScheduleCard extends StatelessWidget {
             width: 5,
           ),
           Text(
-            //"Monday, 2023/09/10",
             '$day, $date',
             style: const TextStyle(color: Colors.white),
           ),
@@ -364,7 +360,6 @@ class ScheduleCard extends StatelessWidget {
           ),
           Flexible(
               child: Text(
-            //'2.00 PM',
             '$time',
             style: const TextStyle(color: Colors.white),
           ))

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:healthcare_management_system/screens/auth.dart';
 import 'package:healthcare_management_system/screens/loginPage.dart';
 import 'package:healthcare_management_system/utils/config.dart';
 
 class AppDrawer extends StatelessWidget {
-  //AuthService authService = AuthService();
 
   final String userName; 
   final String profilePictureUrl; 
@@ -89,7 +87,6 @@ class AppDrawer extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () async {
-                          //await authService.signOut();
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                               builder: (context) => LoginPage(),

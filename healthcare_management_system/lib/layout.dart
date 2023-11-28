@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
 import 'package:healthcare_management_system/screens/home.dart';
 import 'package:healthcare_management_system/screens/messages.dart';
-import 'package:healthcare_management_system/screens/settings.dart';
 import 'package:healthcare_management_system/screens/symptomsPage.dart';
 
 

@@ -4,26 +4,15 @@ import '../components/customAppBar.dart';
 import '../utils/config.dart';
 
 class DoctorDetails extends StatefulWidget {
-  const DoctorDetails({Key? key, /*required this.doctor, required this.isFav*/})
+  const DoctorDetails({Key? key})
         : super(key: key);
-
-  /*final Map<String, dynamic> doctor;
-  final isFav;*/
 
   @override
   State<DoctorDetails> createState() => DoctorDetailsState();
 }
 
 class DoctorDetailsState extends State<DoctorDetails> {
-  //Map<String, dynamic> doctor = {};
   bool isFav = false;
-
-  /*@override
-  void initState() {
-    doctor = widget.doctor;
-    isFav = widget.isFav;
-    super.initState();
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +22,6 @@ class DoctorDetailsState extends State<DoctorDetails> {
       appBar: CustomAppBar(
         appTitle: "Doctor Details",
         icon: const Icon(Icons.arrow_back_ios),
-        //icon: const Icon(FontAwesomeIcons.arrowUpFromBracket),
         actions: [
           IconButton(
             onPressed: () async {
@@ -42,8 +30,6 @@ class DoctorDetailsState extends State<DoctorDetails> {
               });
             },
             icon: Icon(
-              //icon: FaIcon(
-              //isFav ? Icons.favourite_rounded : Icons.favourite_outline,
               isFav ? Icons.favorite : Icons.favorite_border_outlined,
               color: Colors.blue,
             ),
@@ -94,13 +80,11 @@ class DetailHead extends StatelessWidget {
             Config.spaceMedium,
             CircleAvatar(
               radius: 65.0,
-             //backgroundImage: AssetImage("Assets/doctor_9.jpg"),
               backgroundImage: NetworkImage("http://192.168.43.214:8000${doctor['doctor_profile']}",),
               backgroundColor: Colors.white,
             ),
             Config.spaceMedium,
             Text(
-              //"Dr. Wasana Kumari",
               "Dr. ${doctor['doctor_name']}",
               style: const TextStyle(
                 color: Colors.black,
@@ -112,7 +96,6 @@ class DetailHead extends StatelessWidget {
             SizedBox(
               width: Config.widthSize * 0.75,
               child: Text(
-                //"MBBS (International Medical University, Russia), MRCP (Royal College of Physicians, United Kingdom)",
                 "${doctor['bio_data']}",
                 style: const TextStyle(
                   color: Colors.grey,
@@ -206,13 +189,11 @@ class DoctorInfo extends StatelessWidget {
       children: <Widget>[
         InfoCard(
             label: "Patients",
-            //value: "98",
             value: "$patients",
         ),
         const SizedBox(width: 15,),
         InfoCard(
           label: "Experience",
-          //value: "6 Years",
           value: "$exp Years",
         ),
         const SizedBox(width: 15,),

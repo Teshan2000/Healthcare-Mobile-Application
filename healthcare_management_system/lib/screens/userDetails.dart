@@ -17,7 +17,7 @@ class _UserDetailsState extends State<UserDetails> {
   String height = "";
   String weight = "";
 
-  bool isEditing = false; // Track if editing mode is enabled
+  bool isEditing = false; 
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,6 @@ class _UserDetailsState extends State<UserDetails> {
       appBar: AppBar(
         title: Text('Profile'),
         actions: <Widget>[
-          // Edit button
           isEditing
               ? IconButton(
                   icon: Icon(Icons.save),
@@ -33,7 +32,7 @@ class _UserDetailsState extends State<UserDetails> {
                     // Save the updated user information
                     // Implement your save logic here
                     setState(() {
-                      isEditing = false; // Disable editing mode
+                      isEditing = false; 
                     });
                   },
                 )
@@ -41,7 +40,7 @@ class _UserDetailsState extends State<UserDetails> {
                   icon: Icon(Icons.edit),
                   onPressed: () {
                     setState(() {
-                      isEditing = true; // Enable editing mode
+                      isEditing = true; 
                     });
                   },
                 ),
@@ -55,7 +54,8 @@ class _UserDetailsState extends State<UserDetails> {
               CircleAvatar(
                 radius: 80.0,
                 backgroundImage: AssetImage(
-                    'Assets/profile1.jpg'), // Replace with user's profile picture URL
+                    'Assets/profile1.jpg'
+                ), // Replace with user's profile picture URL
               ),
               SizedBox(height: 20.0),
               // Arrange user information fields in two columns, filling first and third
@@ -72,7 +72,7 @@ class _UserDetailsState extends State<UserDetails> {
                           : null,
                     ),
                   ),
-                  SizedBox(width: 10.0), // Add space between columns
+                  SizedBox(width: 10.0),
                   Expanded(
                     child: buildTextFormField(
                       "Last Name",
@@ -97,7 +97,7 @@ class _UserDetailsState extends State<UserDetails> {
                       isEditing ? (val) => setState(() => email = val) : null,
                     ),
                   ),
-                  SizedBox(width: 10.0), // Add space between columns
+                  SizedBox(width: 10.0), 
                   Expanded(
                     child: buildTextFormField(
                       "Contact Number",
@@ -124,7 +124,7 @@ class _UserDetailsState extends State<UserDetails> {
                           : null,
                     ),
                   ),
-                  SizedBox(width: 10.0), // Add space between columns
+                  SizedBox(width: 10.0), 
                   Expanded(
                     child: buildTextFormField(
                       "Gender",
@@ -149,7 +149,7 @@ class _UserDetailsState extends State<UserDetails> {
                           : null,
                     ),
                   ),
-                  SizedBox(width: 10.0), // Add space between columns
+                  SizedBox(width: 10.0), 
                   Expanded(
                     child: buildTextFormField(
                       "Marital Status",
@@ -174,7 +174,7 @@ class _UserDetailsState extends State<UserDetails> {
                       isEditing ? (val) => setState(() => height = val) : null,
                     ),
                   ),
-                  SizedBox(width: 10.0), // Add space between columns
+                  SizedBox(width: 10.0), 
                   Expanded(
                     child: buildTextFormField(
                       "Weight",
@@ -186,14 +186,13 @@ class _UserDetailsState extends State<UserDetails> {
                 ],
               ),
               SizedBox(height: 20.0),
-              // Save button at the bottom
               if (isEditing)
                 ElevatedButton(
                   onPressed: () {
                     // Save the updated user information
                     // Implement your save logic here
                     setState(() {
-                      isEditing = false; // Disable editing mode
+                      isEditing = false; 
                     });
                   },
                   child: Text("Save"),

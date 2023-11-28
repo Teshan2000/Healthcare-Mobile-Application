@@ -34,7 +34,6 @@ class RegisterPage extends StatelessWidget {
                     child: Image.asset("Assets/home_banner.png"),
                   ),
                 ),
-                //const SizedBox(height: 1),
                 Center(
                   child: SizedBox(
                     width: 230,
@@ -42,7 +41,6 @@ class RegisterPage extends StatelessWidget {
                     child: Image.asset("Assets/register.png"),
                   ),
                 ),
-                //Config.spaceSmall,
                 Center(
                   child: Text(
                     AppText.enText['register_text']!,

@@ -356,17 +356,7 @@ class _SymptomsPageState extends State<SymptomsPage> {
                 ),
               ),
             ],
-          ),
-          // onTap: () {
-          //   // MyApp.navigatorKey.currentState!.push(MaterialPageRoute(
-          //   //     builder: (_) => Symptoms()));
-          //   Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //       builder: (context) => Symptoms(),
-          //     ),
-          //   );
-          // },
+          ),          
           onTap: () {
             String symptomName = "Fever"; 
             Navigator.push(

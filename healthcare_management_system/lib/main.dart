@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/models/authModel.dart';
-import 'package:healthcare_management_system/screens/auth.dart';
 import 'package:healthcare_management_system/screens/doctorDetails.dart';
 import 'package:healthcare_management_system/screens/home.dart';
 import 'package:healthcare_management_system/screens/loginPage.dart';

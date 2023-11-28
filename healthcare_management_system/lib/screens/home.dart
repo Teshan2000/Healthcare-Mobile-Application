@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:healthcare_management_system/components/appDrawer.dart';
-import 'package:healthcare_management_system/components/chatBody.dart';
 import 'package:healthcare_management_system/providers/dioProvider.dart';
 import 'package:healthcare_management_system/screens/appointments.dart';
 import 'package:healthcare_management_system/screens/messages.dart';
