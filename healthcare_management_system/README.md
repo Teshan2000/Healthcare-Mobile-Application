@@ -1,6 +1,14 @@
-# healthcare_management_system
+# Healthcare Mobile Based System
 
-A new Flutter project.
+A Flutter project for Healthcare Mobile App. <br>
+<ul type="disc">
+    <li>Find Doctors</li>
+    <li>Find Symptoms</li>
+    <li>Book appointments</li>
+    <li>schedule appointments</li>
+    <li>Chat with Doctors</li>
+    <li>Pay for Channeling</li>
+</ul><br>
 
 ## Getting Started
 

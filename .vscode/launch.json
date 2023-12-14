@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "healthcare_management_system",
+            "cwd": "healthcare_management_system",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "healthcare_management_system (profile mode)",
+            "cwd": "healthcare_management_system",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "healthcare_management_system (release mode)",
+            "cwd": "healthcare_management_system",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

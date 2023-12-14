@@ -1,35 +1,26 @@
-import 'package:flutter/material.dart';
-//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:healthcare_management_system/utils/config.dart';
-import 'package:healthcare_management_system/components/custom_appbar.dart';
+import 'package:flutter/material.dart'
+import 'package:healthcare_management_system/components/button.dart';
+import '../components/customAppBar.dart';
+import '../utils/config.dart';
 
 class DoctorDetails extends StatefulWidget {
-  const DoctorDetails({Key? key, required this.doctor, required this.isFav}) 
+  const DoctorDetails({Key? key})
         : super(key: key);
-  final Map<String, dynamic> doctor;
-  final isFav;
 
   @override
   State<DoctorDetails> createState() => DoctorDetailsState();
 }
 
 class DoctorDetailsState extends State<DoctorDetails> {
-  Map<String, dynamic> doctor = {};
   bool isFav = false;
 
   @override
-  void initState() {
-    doctor = widget.doctor;
-    isFav = widget.isFav;
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final doctor = ModalRoute.of(context)!.settings.arguments as Map;
+    Config().init(context);
     return Scaffold(
       appBar: CustomAppBar(
         appTitle: "Doctor Details",
-        //icon: const FaIcon(Icons.arrow_back_ios),
         icon: const Icon(Icons.arrow_back_ios),
         actions: [
           IconButton(
@@ -37,12 +28,10 @@ class DoctorDetailsState extends State<DoctorDetails> {
               setState(() {
                 isFav = !isFav;
               });
-            }, 
+            },
             icon: Icon(
-              //icon: FaIcon(
-              //isFav ? Icons.favourite_rounded : Icons.favourite_outline,
               isFav ? Icons.favorite : Icons.favorite_border_outlined,
-              color: Colors.red,
+              color: Colors.blue,
             ),
           )     
         ],
@@ -50,21 +39,21 @@ class DoctorDetailsState extends State<DoctorDetails> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            AboutDoctor(
+            DetailHead(
               doctor:doctor,
-            ), 
+            ),
             DetailBody(
               doctor:doctor,
             ),
-            const Spacer(),
             Padding(
               padding: const EdgeInsets.all(20),
               child: Button(
                 width: double.infinity,
                 title: "Book Appointment",
                 onPressed: () {
-                  Navigator.of(context).pushNamed("appointment",
-                      arguments: {"doc_id": doctor["doc_id"]});
+                  Navigator.of(context).pushNamed("schedule",
+                      arguments: {"doctor_id": doctor["doctor_id"]}
+                  );
                 },
                 disable: false,
               ),
@@ -74,16 +63,12 @@ class DoctorDetailsState extends State<DoctorDetails> {
       ),
     );
   }
-
-  Button({required double width, required String title, required Null Function() onPressed, required bool disable}) {}
 }
 
-class AboutDoctor extends StatelessWidget {
-  const AboutDoctor({Key? key, required this.doctor}) : super(key: key);
+class DetailHead extends StatelessWidget {
+  const DetailHead({Key? key, required this.doctor}) : super(key: key);
 
   final Map<dynamic, dynamic> doctor;
-
-  get assets => null;
 
   @override
   Widget build(BuildContext context) {
@@ -92,28 +77,29 @@ class AboutDoctor extends StatelessWidget {
       width: double.infinity,
       child: Column(
           children: <Widget>[
-            const CircleAvatar(
+            Config.spaceMedium,
+            CircleAvatar(
               radius: 65.0,
-              backgroundImage: AssetImage("assets/doctor_9.jpg"),
+              backgroundImage: NetworkImage("http://192.168.43.214:8000${doctor['doctor_profile']}",),
               backgroundColor: Colors.white,
             ),
             Config.spaceMedium,
-            const Text(
-              "Dr. Wasana Kumari",
-              style: TextStyle(
+            Text(
+              "Dr. ${doctor['doctor_name']}",
+              style: const TextStyle(
                 color: Colors.black,
-                fontSize: 24.0,
+                fontSize: 25.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Config.spaceSmall,
             SizedBox(
               width: Config.widthSize * 0.75,
-              child: const Text(
-                "MBBS (International Medical University, Russia), MRCP (Royal College of Physicians, United Kingdom)",
-                style: TextStyle(
+              child: Text(
+                "${doctor['bio_data']}",
+                style: const TextStyle(
                   color: Colors.grey,
-                  fontSize: 15.0,
+                  fontSize: 16.0,
                 ),
                 softWrap: true,
                 textAlign: TextAlign.center,
@@ -126,18 +112,20 @@ class AboutDoctor extends StatelessWidget {
                 "Colombo General Hospital",
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 15.0,
+                  fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
                 softWrap: true,
                 textAlign: TextAlign.center,
               ),
-            )
+            ),
+            Config.spaceSmall,
           ],
       ),
     );
   }
 }
+
 
 class DetailBody extends StatelessWidget {
   const DetailBody({Key? key, required this.doctor}) : super(key: key);
@@ -149,33 +137,32 @@ class DetailBody extends StatelessWidget {
     Config().init(context);
     return Container(
       padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(bottom: 30),
+      margin: const EdgeInsets.only(bottom: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Config.spaceSmall,
           DoctorInfo(
-            patients: doctor["patients"], 
+            patients: doctor["patients"],
             exp: doctor["experience"],
           ),
-          Config.spaceMedium,
-           Row(
+          Config.spaceSmall,
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const <Widget>[
               Text(
-                "Consultation Price",
+                "Channeling Fee",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 18,
                 ),
                 softWrap: true,
                 textAlign: TextAlign.left,
-              ),              
+              ),
               Text(
                 "Rs. 350",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 18,                  
+                  fontSize: 18,
                 ),
                 softWrap: true,
                 textAlign: TextAlign.right,
@@ -189,7 +176,7 @@ class DetailBody extends StatelessWidget {
 }
 
 class DoctorInfo extends StatelessWidget {
-  const DoctorInfo({Key? key, required this.patients, required this.exp}) 
+  const DoctorInfo({Key? key, required this.patients, required this.exp})
       : super(key: key);
 
   final int patients;
@@ -199,17 +186,22 @@ class DoctorInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     Config().init(context);
     return Row(
-      children: const <Widget>[
+      children: <Widget>[
         InfoCard(
-          label: "Dental",
+            label: "Patients",
+            value: "$patients",
+        ),
+        const SizedBox(width: 15,),
+        InfoCard(
+          label: "Experience",
+          value: "$exp Years",
+        ),
+        const SizedBox(width: 15,),
+        const InfoCard(
+          label: "Ratings",
           value: "4.5",
         ),
-        SizedBox(width: 15,),
-        InfoCard(
-          label: "Patients",
-          value: "93",
-        ),
-      ],       
+      ],
     );
   }
 }
@@ -239,7 +231,7 @@ class InfoCard extends StatelessWidget {
               label,
               style: const TextStyle(
                 color: Colors.black,
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -250,7 +242,7 @@ class InfoCard extends StatelessWidget {
               value,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: FontWeight.w800,
               ),
             ),
