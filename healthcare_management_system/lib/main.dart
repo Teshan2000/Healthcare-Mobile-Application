@@ -69,6 +69,22 @@ class MyApp extends StatelessWidget {
           'settings': (context) => Settings(),
         },
       ),
+
+      initialRoute: '/',
+      routes: {
+        '/':(context) => SplashScreen(),
+          "login": (context) => LoginPage(),
+          "register": (context) => RegisterPage(),
+          'home':(context) => const Home(),
+          'home':(context) => const Layout(),
+          'symptoms': (context) => Symptoms(symptomName: '',),
+          'doctor': (context) => const DoctorDetails(),
+          'schedule': (context) => const Schedule(),
+          'payment': (context) => const Payment(),
+          'success': (context) => const Success(),
+          'settings': (context) => Settings(),
+      },
+      //home: const Home(),
     );
   }
 }

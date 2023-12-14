@@ -41,6 +41,7 @@ dependencies:
   
   flutter:
     sdk: flutter
+    #font_awesome_flutter: ^10.2.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -76,7 +77,6 @@ flutter:
     - Assets/doctors/
     - Assets/symptoms/
         # - images/a_dot_ham.jpeg
-    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

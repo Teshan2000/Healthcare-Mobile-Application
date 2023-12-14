@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
 import 'package:healthcare_management_system/components/button.dart';
 import '../components/customAppBar.dart';
 import '../utils/config.dart';
